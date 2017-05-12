@@ -1,7 +1,8 @@
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var Strategy = require('passport-github').Strategy;
+
 var User = require('../models/user');
 var configAuth = require('./auth');
 
@@ -18,21 +19,26 @@ module.exports = function(passport) {
   });
 
   passport.use('local-signup', new LocalStrategy({
-    usernameField: 'email',
+    usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true,
   },
-  function(req, email, password, done) {
+  function(req, username, password, done) {
     process.nextTick(function() {
-      User.findOne({ 'local.email':  email }, function(err, user) {
+      User.findOne({ 'local.username':  username }, function(err, user) {
         if (err)
             return done(err);
         if (user) {
-          return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+          return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
         } else {
           var newUser = new User();
-          newUser.local.email = email;
+          newUser.local.username = username;
+          console.log(username+"goooooooo");
           newUser.local.password = newUser.generateHash(password);
+          newUser.local.ganadas = 0;
+          newUser.local.perdidas = 0;
+          newUser.local.totales = 0;
+          newUser.local.empatadas = 0;
           newUser.save(function(err) {
             if (err)
               throw err;
@@ -44,12 +50,12 @@ module.exports = function(passport) {
   }));
 
   passport.use('local-login', new LocalStrategy({
-    usernameField: 'email',
+    usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true,
   },
-  function(req, email, password, done) {
-    User.findOne({ 'local.email':  email }, function(err, user) {
+  function(req, username, password, done) {
+    User.findOne({ 'local.username':  username }, function(err, user) {
       if (err)
           return done(err);
       if (!user)
@@ -67,18 +73,24 @@ module.exports = function(passport) {
     profileFields: ['id', 'email', 'first_name', 'last_name'],
   },
   function(token, refreshToken, profile, done) {
+    console.log(profile);
     process.nextTick(function() {
-      User.findOne({ 'facebook.id': profile.id }, function(err, user) {
+      User.findOne({ 'local.id': profile.id }, function(err, user) {
         if (err)
           return done(err);
         if (user) {
           return done(null, user);
         } else {
           var newUser = new User();
-          newUser.facebook.id = profile.id;
-          newUser.facebook.token = token;
-          newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
-          newUser.facebook.email = (profile.emails[0].value || '').toLowerCase();
+          newUser.local.id = profile.id;
+          newUser.local.token = token;
+          newUser.local.username_facebook = profile.name.givenName + ' ' + profile.name.familyName;
+          newUser.local.email = (profile.emails[0].value || '').toLowerCase();
+          newUser.local.empatadas = 0;
+          newUser.local.ganadas = 0;
+          newUser.local.perdidas = 0;
+          newUser.local.totales = 0;
+         
 
           newUser.save(function(err) {
             if (err)
@@ -96,18 +108,26 @@ module.exports = function(passport) {
     callbackURL: configAuth.twitterAuth.callbackURL,
   },
   function(token, tokenSecret, profile, done) {
+    
     process.nextTick(function() {
-      User.findOne({ 'twitter.id': profile.id }, function(err, user) {
+      User.findOne({ 'local.id': profile.id }, function(err, user) {
         if (err)
           return done(err);
         if (user) {
           return done(null, user);
         } else {
           var newUser = new User();
-          newUser.twitter.id          = profile.id;
-          newUser.twitter.token       = token;
-          newUser.twitter.username    = profile.username;
-          newUser.twitter.displayName = profile.displayName;
+          newUser.local.id          = profile.id;
+          newUser.local.token       = token;
+          newUser.local.username_twitter    = profile.username;
+          newUser.local.displayName = profile.displayName;
+          newUser.local.fotos = profile.photos.value;
+          newUser.local.ganadas = 0;
+          newUser.local.perdidas = 0;
+          newUser.local.totales = 0;
+          newUser.local.empatadas = 0;
+
+
           newUser.save(function(err) {
             if (err)
              throw err;
@@ -118,32 +138,41 @@ module.exports = function(passport) {
     });
   }));
 
-  passport.use(new GoogleStrategy({
-    clientID: configAuth.googleAuth.clientID,
-    clientSecret: configAuth.googleAuth.clientSecret,
-    callbackURL: configAuth.googleAuth.callbackURL,
-  },
-    function(token, refreshToken, profile, done) {
-      process.nextTick(function() {
-        User.findOne({ 'google.id': profile.id }, function(err, user) {
-          if (err)
-            return done(err);
-          if (user) {
-            return done(null, user);
-          } else {
-            var newUser = new User();
-            newUser.google.id = profile.id;
-            newUser.google.token = token;
-            newUser.google.name = profile.displayName;
-            newUser.google.email = profile.emails[0].value;
-            newUser.save(function(err) {
-              if (err)
-                throw err;
-              return done(null, newUser);
-            });
-          }
-        });
-      });
-    }));
+  
+passport.use(new Strategy({
+  clientID: '4da3fc9817dc296aee71',
+  clientSecret: '0ef3f4b8fe00806df1ef8f734e2a47332918830f',
+  callbackURL: 'http://localhost:8080/login/github/return',
+  profileFields: ['id', 'email', 'first_name', 'last_name'],
 
+}, 
+function(token, tokenSecret, profile, done) {
+  console.log(profile.username);
+    process.nextTick(function() {
+
+  
+      User.findOne({ 'local.id': profile.id }, function(err, user) { 
+          
+        if (err)
+          return done(err);
+        if (user) {
+          return done(null, user);
+        } else {
+          var newUser = new User();
+          newUser.local.id          = profile.id;
+          newUser.local.token       = token;
+          newUser.local.username_github    = profile.username;
+          newUser.local.displayName = profile.displayName;
+          newUser.local.email = (profile.emails[0].value || '').toLowerCase();
+          newUser.local.empatadas = 0;
+          newUser.save(function(err) {
+            if (err)
+             throw err;
+            console.log(newUser.github.username);
+            return done(null, newUser);
+          });
+        }
+      });
+    });
+  }));
 };

@@ -1,0 +1,352 @@
+@import "bourbon";
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700,300);
+
+
+$size-sm: 60px;
+$size: 110px;
+$spacing: 5px;
+$thickness: 2px;
+$padding: 70px;
+$radius: 30px;
+
+$player-color: rgb(255, 255, 255);
+$computer-color: rgba(255, 255, 255, .5);
+$border-color: #5E5955;
+$default-color: #55504C;
+
+$cross-icon:  "\f00d";
+$nought-icon:  "\f10c";
+
+body {
+  font-family: Arial;
+  @include linear-gradient(50deg, #BB4A9F 0%, #E4E5D7 35%, #BEE8D7 65%, #51C8C8 90%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.board-default {
+  width: ($size-sm * 3 + $padding);
+  height: ($size-sm * 3 + $padding);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  border-radius: $radius;
+  background-color: rgba(255, 255, 255, .4);
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border-radius: $radius+21;
+    border: 15px solid rgba(0, 0, 0, .05);
+  }
+  @media(min-width: 450px) {
+    width: ($size * 3 + $padding);
+    height: ($size * 3 + $padding);
+  }
+}
+
+.board {
+  @extend .board-default;
+  position: relative;
+  margin: 40px auto;
+}
+
+.board__wrapper {
+  display: inline-flex;
+}
+.board__row {
+  display: block;
+}
+
+// Radio input
+.board__slot-hidden {
+  display: none;
+}
+
+// Radio label
+.board__slot {
+  display: inline-block;
+  height: $size-sm;
+  width: $size-sm;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, .15);
+  margin: 5px;
+  @media(min-width: 450px) {
+    height: $size;
+    width: $size;
+    border-radius: $radius;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    border: 2px solid rgba(0, 0, 0, .09);
+  }
+}
+
+// Settings menu
+.board__settings {
+  @extend .board-default;
+  position: absolute;
+  margin: auto;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  text-align: center;
+  visibility: hidden;
+  background-color: rgba(223, 244, 239, 1);
+}
+
+
+.board__settings-cog {
+
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 30px;
+  font-size: 2em;
+  background-color: rgb(224, 244, 239);
+  border-radius: 50%;
+  border: 10px solid rgb(224, 244, 239);
+  cursor: pointer;
+  z-index: 9;
+  color: rgba(0, 0, 0, .5);
+
+  &:hover {
+    box-shadow: 1px 1px 2px 5px rgba(0, 0, 0, .05);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: $radius+21;
+    border: 3px solid rgba(0, 0, 0, .2);
+  }
+}
+
+.board__settings__choice {
+  display: inline-block;
+  height: $size-sm;
+  width: $size-sm;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, .15);
+  margin: 5px;
+  z-index: 99;
+  padding-top: 8px;
+
+  @media(min-width: 450px) {
+    height: $size;
+    width: $size;
+    border-radius: $radius;
+  }
+  @at-root #{&}-cross {
+    @extend .board__settings__choice;
+    font-size: .7em;
+  }
+  @at-root #{&}-nought {
+    @extend .board__settings__choice;
+    font-size: .2em;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    border: 2px solid rgba(0, 0, 0, .09);
+  }
+}
+
+.board__settings__choice-cross {
+  font-family: 'FontAwesome';
+  font-size: 2.3em;
+  cursor: pointer;
+  @media(min-width: 450px) {
+    font-size: 3em;
+    top: 15px;
+  }
+  &:before {
+    color: $player-color;
+    content: $cross-icon;
+  }
+}
+
+.board__settings__choice-nought {
+  font-family: 'FontAwesome';
+  font-size: 2.3em;
+  cursor: pointer;
+  @media(min-width: 450px) {
+    font-size: 2.8em;
+    top: 10px;
+  }
+  &:before {
+    color: $player-color;
+    content: $nought-icon;
+  }
+}
+
+// Difficulty menu
+.board__difficulty {
+  @extend .board-default;
+  position: absolute;
+  margin: auto;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  text-align: center;
+  background-color: rgba(223, 244, 239, .8);
+}
+
+.board__header {
+  font-family: 'PT Sans', Arial, sans-serif;
+  color: rgba(0, 0, 0, .7);
+  font-size: 1.5em;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  text-transform: uppercase;
+  @media(min-width: 450px) {
+    font-size: 2em;
+  }
+  @at-root #{&}-settings {
+    @extend .board__header;
+  }
+  @at-root #{&}-difficulty {
+    @extend .board__header;
+  }
+}
+
+.board__difficulty__button {
+  position: relative;
+  display: block;
+  margin: 10px auto;
+  padding: 5px;
+  font-family: 'PT Sans', arial, sans-serif;
+  font-size: 1em;
+  width: 150px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #000;
+  text-transform: uppercase;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    transition: all 250ms ease-out;
+    bottom: 15px;
+    width: 50%;
+    height: 20%;
+    box-shadow: 0 10px 30px rgba(31, 31, 31, 0.5);
+  }
+  &:before {
+    left: 8px;
+    transform: rotate(-3deg);
+  }
+  &:after {
+    right: 8px;
+    transform: rotate(3deg);
+  }
+  &:hover {
+    border-color: transparent;
+    cursor: pointer;
+    &:before, &:after {
+      box-shadow: 0 15px 12px rgba(31, 31, 31, 0.7);
+    }
+  }
+
+  @at-root #{&}-easy {
+    @extend .board__difficulty__button;
+    margin-top: 70px;
+  }
+  @at-root #{&}-medium {
+    @extend .board__difficulty__button;
+  }
+  @at-root #{&}-hard {
+    @extend .board__difficulty__button;
+  }
+
+  @media(min-width: 450px) {
+    padding: 10px 40px;
+    font-size: 2em;
+    width: 200px;
+  }
+}
+
+// nought icons
+.nought:before, .cross:before {
+  font-family: 'FontAwesome';
+  font-size: 3em;
+  position: absolute;
+  top: 5px;
+  bottom: 0;
+  left: 0px;
+  right: 0px;
+  cursor: default;
+  @media(min-width: 450px) {
+    font-size: 5em;
+    top: 15px;
+  }
+}
+.nought:before {
+  content: $nought-icon;
+}
+.cross:before {
+  content: $cross-icon;
+}
+
+.computer-color {
+  color: $computer-color;
+}
+
+.player-color {
+  color: $player-color;
+}
+
+/* Animations */
+.slideUp {
+  animation: slideUp 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.slideDown {
+  animation: slideDown 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-500px);
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-500px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

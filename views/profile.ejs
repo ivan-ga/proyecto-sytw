@@ -1,45 +1,101 @@
 <% include partials/head %>
+<style type="text/css">
+  table{
+  border:1px solid black;
+  padding:4px;
+  cursor:grab;
+  
+}
+td{
+  background:grey;
+  color:white;
+  padding:4px;
+  
+}
+th{
+  background:black;
+  color:yellow;
+}
+</style>
+  
 
   <body>
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-12 ">
       <div class="text-center">
         <h1 class=" fa fa-user"> Profile</h1><br>
         <span><strong>user id</strong>: <%= user._id ? user._id : '' %></span><br>
         <span class="fa fa-sign-out"><a href="/"> Sign out</a></span>
         <hr>
+        <div class="row"> 
+         <div class="col-sm-6 ">
         <div class="jumbotron">
-          <% if (user.local.email != null) { %>
-            <img src="https://avatars.io/gravatar/<%= user.local.email %>/140" class="img-circle"><br>
-            <strong>email</strong>: <%= user.local.email %><br>
+          <% if (user.local.username != null) { %>
+            <img src="https://avatars.io/gravatar/<%= user.local.username %>/140" class="img-circle"><br>
+            <strong>Nombre</strong>: <%= user.local.username %><br>
+            <table>
+                <tr>
+                  <th>Totales</th>
+                  <th>Ganadas</th>
+                  <th>Perdidas</th>
+                </tr>
+                <tr>
+                <td> 1</td>
+                <td> 2</td>
+                <td> 4</td>
+                </tr>
+                
+              </table>
+
           <% } %>
 
-          <% if (user.facebook.id != null) { %>
+          <% if (user.local.username_facebook != null) { %>
             <h2 class="fa fa-facebook"> Facebook</h2><br>
-            <img src="https://avatars.io/gravatar/<%= user.facebook.email %>/140" class="img-circle"><br>
-            <strong>id</strong>: <%= user.facebook.id %><br>
-            <strong>email</strong>: <%= user.facebook.email %><br>
-            <strong>name</strong>: <%= user.facebook.name %>
+            <img src="http://graph.facebook.com/<%= user.local.id %>/picture?type=large" class="img-circle"><br>
+            <strong>name</strong>: <%= user.local.username_facebook %>
           <% } %>
 
-          <% if (user.twitter.id != null) { %>
+          <% if (user.local.username_twitter != null) { %>
             <h2 class="fa fa-twitter"> Twitter</h2><br>
-            <img src="https://avatars.io/twitter/<%= user.twitter.username %>" class="img-circle"><br>
-            <strong>id</strong>: <%= user.twitter.id %><br>
-            <strong>token</strong>: <%= user.twitter.token %><br>
-            <strong>username</strong>: <%= user.twitter.username %><br>
-            <strong>displayName</strong>: <%= user.twitter.displayName %>
+            <img src="https://twitter.com/<%= user.local.username_twitter %>/profile_image?size=original" class="img-circle"><br>
+            <strong>Nombre usuario</strong>: <%= user.local.username_twitter %><br>
+           
+          <% } %>
+          <% if (user.local.username_github != null) { %>
+            <h2 class="fa fa-github"> Github</h2><br>
+            <img src="https://avatars2.githubusercontent.com/u/<%= user.local.id %>" class="img-circle"><br>
+            <strong>Nombre usuario</strong>: <%= user.local.username_github %><br>
+          <% } %>
+         
+        </div>
+     
+    </div>
+    <div class="col-sm-5 ">
+            <div class="well">
+
+          <% if (!user) { %>
+
+            <div class="login-form">
+               <h1>Si quiere acceder al juego debe iniciar sesión</h1>
+
+               <button type="button" class="log-btn" onclick="window.location='/login';">Log in</button>
+
+
+             </div>
+
+          <% } else { %>
+            
+             <div class="login-form">
+               <h1>Juega al jueguito</h1>
+
+               <button type="button" class="log-btn" onclick="window.location='/book';">Entrar al jueguito</button>
+
+             </div>
+             
           <% } %>
 
-          <% if (user.google.id != null) { %>
-            <h2 class="fa fa-google-plus"> Google</h2><br>
-            <img src="https://avatars.io/gravatar/<%= user.google.email %>/140" class="img-circle"><br>
-            <strong>id</strong>: <%= user.google.id %><br>
-            <strong>token</strong>: <%= user.google.token %><br>
-            <strong>email</strong>: <%= user.google.email %><br>
-            <strong>name</strong>: <%= user.google.name %>
-          <% } %>
-        </div>
-      </div>
-    </div>
+ </div>
+
+  </div>
+  </div>
   </body>
 </html>
