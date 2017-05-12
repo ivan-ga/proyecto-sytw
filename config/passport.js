@@ -83,6 +83,7 @@ module.exports = function(passport) {
         } else {
           var newUser = new User();
           newUser.local.id = profile.id;
+        //  newUser.local.username = profile.name.givenName + ' ' + profile.name.familyName;
           newUser.local.token = token;
           newUser.local.username_facebook = profile.name.givenName + ' ' + profile.name.familyName;
           newUser.local.email = (profile.emails[0].value || '').toLowerCase();
@@ -90,7 +91,7 @@ module.exports = function(passport) {
           newUser.local.ganadas = 0;
           newUser.local.perdidas = 0;
           newUser.local.totales = 0;
-         
+
 
           newUser.save(function(err) {
             if (err)
@@ -108,7 +109,7 @@ module.exports = function(passport) {
     callbackURL: configAuth.twitterAuth.callbackURL,
   },
   function(token, tokenSecret, profile, done) {
-    
+
     process.nextTick(function() {
       User.findOne({ 'local.id': profile.id }, function(err, user) {
         if (err)
@@ -138,21 +139,21 @@ module.exports = function(passport) {
     });
   }));
 
-  
+
 passport.use(new Strategy({
   clientID: '4da3fc9817dc296aee71',
   clientSecret: '0ef3f4b8fe00806df1ef8f734e2a47332918830f',
   callbackURL: 'http://localhost:8080/login/github/return',
   profileFields: ['id', 'email', 'first_name', 'last_name'],
 
-}, 
+},
 function(token, tokenSecret, profile, done) {
   console.log(profile.username);
     process.nextTick(function() {
 
-  
-      User.findOne({ 'local.id': profile.id }, function(err, user) { 
-          
+
+      User.findOne({ 'local.id': profile.id }, function(err, user) {
+
         if (err)
           return done(err);
         if (user) {

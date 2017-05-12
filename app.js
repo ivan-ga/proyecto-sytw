@@ -56,78 +56,56 @@ const User = mongoose.model("User", userSchema);
 //const Mapa = mongoose.model("Mapa", MapaSchema);
 
 app.get('/m', (request, response) => {
-    console.log(request._passport.instance.Authenticator._strategies);
-    User.find({
-    },{}, function(err,data)
+console.log("saddsadsadsada" );
+  //  console.log(request._passport.instance.Authenticator._strategies);
+    User.find({},{}, function(err,data)
     {
         if(err)  console.error("Error:"+err);
-
-
-
         else
         {
           //console.log(data);
               if( request.query.ganadas != undefined){
-              console.log("Data_creator:");
+
                     for (var i = data.length - 1; i >= 0; i--) {
-                      
-                        if(data[i].local.id!= null ){
-                        console.log(data[i].local);
-                      
-                         let gan= request.query.ganadas;
-                         console.log("tienes"+gan);
-                          console.log("Data_creator:"+data[i].id);
-                          console.log("Data_creator:"+data[i].local.ganadas);
+                          console.log(data[i].id);
+                              console.log(request.session.passport.user );
+                                console.log(request.session.passport.user===data[i].id );
+                        if( data[i].id === request.session.passport.user ){
+console.log("saddsadsadsada" );
                           User.update({"local.id": data[i].local.id}, {$inc: {"local.ganadas":1,"local.totales":1}},function(error,dato){
-                            console.log("holaaaaaa");
                           });
                                        // console.log("Dat:"+data[i].local.username_twitter);
-                          //db.users.update({"local.username_twitter":"alu0100"},{$set:{"local.ganadas":4 
+                          //db.users.update({"local.username_twitter":"alu0100"},{$set:{"local.ganadas":4
                           //console.log("Datasssss_creator:"+data[i].local.ganadas);
                          // console.log();
                         }
                      }
-                
+
               }
-              if( request.query.perdidas != undefined){
-              console.log("Data_creator:");
+              if( request.query.perdidas == true){
+
                     for (var i = data.length - 1; i >= 0; i--) {
-                        if(data[i].local.id!= null){
-                     
-                      
-                         
-                          console.log("Data_creator:"+data[i].local.username_twitter);
-                          console.log("Data_creator:"+data[i].local.perdidas);
+                        if(data[i].id=== request.session.passport.user){
                           User.update({"local.id": data[i].local.id}, {$inc: {"local.perdidas":1,"local.totales":1}},function(error,dato){
-                            console.log("holaaaaaa");
+
                           });
-                                       // console.log("Dat:"+data[i].local.username_twitter);
-                          //db.users.update({"local.username_twitter":"alu0100"},{$set:{"local.ganadas":4 
-                          console.log("Datasssss_creator:"+data[i].local.perdidas);
-                          console.log();
+
                         }
                      }
-                
+
               }
-              if( request.query.empatadas != undefined){
-              console.log("Data_creator:");
+              if( request.query.empatadas == true){
+
                     for (var i = data.length - 1; i >= 0; i--) {
-                        if(data[i].local.id!= null){
-                     
-                      
-                         
-                          console.log("Data_creator:"+data[i].local.id);
-                          console.log("Data_creator:"+data[i].local.empatadas);
+                        if(data[i].id===request.session.passport.user){
+
                           User.update({"local.id": data[i].local.id}, {$set: {"local.empatadas":1,"local.totales":1}},function(error,dato){
-                            console.log("holaaaaaa");
+
                           });
-                                       // console.log("Dat:"+data[i].local.username_twitter);
-                          //db.users.update({"local.username_twitter":"alu0100"},{$set:{"local.ganadas":4 
-                          console.log("Datasssss_creator:"+data[i].local.empatadas);
-                          console.log();
+
                         }
                      }
-                
+
               }
         }
     });
@@ -140,6 +118,19 @@ app.get('/m', (request, response) => {
 });
 
 
+
+app.get('/ranking', (req, res) => {
+
+ User.find().sort('-ganadas').find( function(err,data)
+  {
+      if(err)  console.error("Error:"+err);
+
+        res.render("ranking",{users: data})
+    })
+
+
+  //  res.render('ranking', { user: req.user });
+});
 
 
 

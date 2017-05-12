@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+<body>
+  May Node and Express be with you.
+
+  <ul class="users">
+    
+  <% for(var i=0; i < users.length; i++) {%>
+    <li class="users">
+
+
+      <td><%= users[i].local.username%> </td>
+      <td><%= users[i].local.totales%> </td>
+      <td><%= users[i].local.ganadas %></td>
+      <td><%=  users[i].local.perdidas %></td>
+      <td><%=  users[i].local.empatadas %></td>
+    </li>
+  <% } %>
+  </ul>
+
+</body>
+</html>

@@ -4,20 +4,20 @@
   border:1px solid black;
   padding:4px;
   cursor:grab;
-  
+
 }
 td{
   background:grey;
   color:white;
   padding:4px;
-  
+
 }
 th{
   background:black;
   color:yellow;
 }
 </style>
-  
+
 
   <body>
     <div class="col-sm-12 ">
@@ -26,24 +26,26 @@ th{
         <span><strong>user id</strong>: <%= user._id ? user._id : '' %></span><br>
         <span class="fa fa-sign-out"><a href="/"> Sign out</a></span>
         <hr>
-        <div class="row"> 
+        <div class="row">
          <div class="col-sm-6 ">
         <div class="jumbotron">
           <% if (user.local.username != null) { %>
             <img src="https://avatars.io/gravatar/<%= user.local.username %>/140" class="img-circle"><br>
-            <strong>Nombre</strong>: <%= user.local.username %><br>
+            <strong>Name</strong>: <%= user.local.username %><br>
             <table>
                 <tr>
                   <th>Totales</th>
                   <th>Ganadas</th>
                   <th>Perdidas</th>
+                  <th>Empatadas</th>
                 </tr>
                 <tr>
-                <td> 1</td>
-                <td> 2</td>
-                <td> 4</td>
+                     <td><%= user.local.totales%> </td>
+                     <td><%= user.local.ganadas %></td>
+                     <td><%= user.local.perdidas %></td>
+                     <td><%= user.local.empatadas %></td>
                 </tr>
-                
+
               </table>
 
           <% } %>
@@ -51,23 +53,67 @@ th{
           <% if (user.local.username_facebook != null) { %>
             <h2 class="fa fa-facebook"> Facebook</h2><br>
             <img src="http://graph.facebook.com/<%= user.local.id %>/picture?type=large" class="img-circle"><br>
-            <strong>name</strong>: <%= user.local.username_facebook %>
+            <strong>Name</strong>: <%= user.local.username_facebook %>
+            <table>
+                <tr>
+                  <th>Totales</th>
+                  <th>Ganadas</th>
+                  <th>Perdidas</th>
+                  <th>Empatadas</th>
+                </tr>
+                <tr>
+                     <td><%= user.local.totales %></td>
+                     <td><%= user.local.ganadas %></td>
+                     <td><%= user.local.perdidas %></td>
+                     <td><%= user.local.empatadas %></td>
+                </tr>
+
+              </table>
           <% } %>
 
           <% if (user.local.username_twitter != null) { %>
             <h2 class="fa fa-twitter"> Twitter</h2><br>
             <img src="https://twitter.com/<%= user.local.username_twitter %>/profile_image?size=original" class="img-circle"><br>
-            <strong>Nombre usuario</strong>: <%= user.local.username_twitter %><br>
-           
+            <strong>Name</strong>: <%= user.local.username_twitter %><br>
+            <table>
+                <tr>
+                  <th>Totales</th>
+                  <th>Ganadas</th>
+                  <th>Perdidas</th>
+                  <th>Empatadas</th>
+                </tr>
+                <tr>
+                     <td><%= user.local.totales%> </td>
+                     <td><%= user.local.ganadas %></td>
+                     <td><%= user.local.perdidas %></td>
+                     <td><%= user.local.empatadas %></td>
+                </tr>
+
+              </table>
           <% } %>
           <% if (user.local.username_github != null) { %>
             <h2 class="fa fa-github"> Github</h2><br>
             <img src="https://avatars2.githubusercontent.com/u/<%= user.local.id %>" class="img-circle"><br>
-            <strong>Nombre usuario</strong>: <%= user.local.username_github %><br>
+            <strong>Name</strong>: <%= user.local.username_github %><br>
+            <table>
+                <tr>
+                  <th>Totales</th>
+                  <th>Ganadas</th>
+                  <th>Perdidas</th>
+                  <th>Empatadas</th>
+                </tr>
+                <tr>
+                     <td><%= user.local.totales%> </td>
+                     <td><%= user.local.ganadas %></td>
+                     <td><%= user.local.perdidas %></td>
+                     <td><%= user.local.empatadas %></td>
+                </tr>
+
+              </table>
           <% } %>
-         
+
         </div>
-     
+
     </div>
     <div class="col-sm-5 ">
             <div class="well">
@@ -83,14 +129,14 @@ th{
              </div>
 
           <% } else { %>
-            
+
              <div class="login-form">
                <h1>Juega al jueguito</h1>
 
                <button type="button" class="log-btn" onclick="window.location='/book';">Entrar al jueguito</button>
 
              </div>
-             
+
           <% } %>
 
  </div>

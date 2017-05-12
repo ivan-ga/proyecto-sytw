@@ -18,6 +18,7 @@ router.get('/signup', function(req, res) {
 });
 
 router.get('/profile', isLoggedIn, function(req, res) {
+  console.log("estoy akiii")
   res.render('profile.ejs', { user: req.user });
 });
 
@@ -28,6 +29,7 @@ router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
+
 
 router.post('/registro', passport.authenticate('local-signup', {
   successRedirect: '/profile',

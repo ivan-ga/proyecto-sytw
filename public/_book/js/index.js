@@ -1,9 +1,6 @@
 /* Globals */
 var NUM_ROWS = 3,
   	NUM_COLS = 3,
-  	GANAX = 0,
-  	GANAO = 0,
-  	EMPAT = 0,
   	NUM_SQUARES = NUM_ROWS * NUM_COLS,
   	GAMEBOARD = new Array(NUM_SQUARES),
     WIN_COMBOS = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],
@@ -66,17 +63,11 @@ $(document).ready(function() {
 
   			if (full(GAMEBOARD)) {
           RUNNING = false;
-          EMPAT +=1;
           enviadatos_empat();
-           console.log("empaaaaooooo"+ GANAX);
-
   				$(".board__header-difficulty").html("It's a tie!");
           $(".board__difficulty").removeClass('slideUp').addClass('slideDown');
   			} else if (wins(GAMEBOARD, "X")) {
-		  RUNNING = false;
-  		  GANAX +=1;
-  		  console.log("ganoooooo"+ GANAX);
-          
+		       RUNNING = false;
            enviadatos_gan();
   				$(".board__header-difficulty").html("You win!");
           $(".board__difficulty").removeClass('slideUp').addClass('slideDown');
@@ -87,9 +78,8 @@ $(document).ready(function() {
 
   				if (wins(GAMEBOARD, "O")) {
             RUNNING = false;
-            GANAO +=1;
-             enviadatos_per();
-             console.log("ganooooddddoo"+ GANAO);
+            enviadatos_per();
+
   					$(".board__header-difficulty").html("You lost!");
             $(".board__difficulty").removeClass('slideUp').addClass('slideDown');
   				}
@@ -126,20 +116,20 @@ function full(state) {
 }
 /*Enviar acutilizar la tabla de base de datos*/
 function enviadatos_gan(){
-		window.location = "/m?ganadas="+ GANAX;
+		window.location = "/m?ganadas="+ true;
 		console.log("messageeeeeee");
 		return true;
 
 
 }
 function enviadatos_per(){
-		window.location = "/m?perdidas="+ GANAO;
+		window.location = "/m?perdidas="+ true;
 		console.log("messageeeeeee");
 		return true;
 
 }
 function enviadatos_empat(){
-		window.location = "/m?empatadas="+ EMPAT;
+		window.location = "/m?empatadas="+ true;
 		console.log("messageeeeeee");
 		return true;
 
