@@ -1,22 +1,13 @@
 
-# express-authentication
+# Proyecto DSI
 
-Simple authentication app using express, node & passport.
+Aplicación web para el juego "3 en raya".
 
-Authenticate locally or through Facebook, Twitter or Google.
+## Enlaces
+* [Enlace a página asignatura](https://campusvirtual.ull.es/1617/course/view.php?id=1136)
 
-## Prerequisites 
-
-* [Git](http://git-scm.com/)
-* [Node.js with npm](https://nodejs.org/en/)
-* [MongoDB](https://docs.mongodb.org/manual/installation/)
-
-## Installation
-
-* ` git clone https://github.com/danielgynn/express-authentication.git`
-* `cd express-authentication`
-* `npm install`
-* You will need a Mongo instance running. In a new terminal window run `mongod`
-* `node app`
-
-Head over to [http://localhost:3000](http://localhost:3000)
+## Autores
+* [Iván González Aguiar](https://ivan-ga.github.io/)
+* [Miguel Parra Esquivel](https://alu0100200393.github.io/)
+* [Jairo González Lemus](https://alu0100813272.github.io/)
+* [José Lucas Ruiz Glez](https://alu0100785265.github.io/)
