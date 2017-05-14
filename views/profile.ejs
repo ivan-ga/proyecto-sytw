@@ -1,97 +1,195 @@
-<% include partials/head %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Proyecto-DSI</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="../css/mdb.min.css" rel="stylesheet">
+    <link href="../css/mdb.min.css" rel="stylesheet">
+    <link href="css/table.css" rel="stylesheet">
+
+  <link href="..//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
 <style type="text/css">
-  table{
-  border:1px solid black;
-  padding:4px;
-  cursor:grab;
-
+img { width: 140px; height: 140px; border-radius: 50%!important }
+.juego{
+  background: url(https://1.bp.blogspot.com/-U4nLweOdSGI/WRiV5gQMLUI/AAAAAAAAArY/-ZvK4c810cUnhz5pWOm1ohSRfC0E2i4bACLcB/s320/juego.png);
+  width: 500px;
+  height:350px;
 }
-td{
-  background:grey;
-  color:white;
-  padding:4px;
-
+.boto{
+border-radius: 50%;}
+.boto1{
+  border-radius: 25%;
 }
-th{
-  background:black;
-  color:yellow;
-}
+  
 </style>
+<body>
 
+    <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-toggleable-md navbar-dark">
+            <div class="container">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <strong>Proyecto DSI</strong>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav1">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/profile">Home </a>
+                        </li>
 
-  <body>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/juego">Juego</a>
+                            <!--<a class="link" href="/cambiarpass">Cambiar contraseña</a>-->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ranking">Ranking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Perfil</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline waves-effect waves-light">
+                        <input class="form-control" type="text" placeholder="Search">
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!--/.Navbar-->
+    </header>
+
+  <main>
     <div class="col-sm-12 ">
       <div class="text-center">
-        <h1 class=" fa fa-user"> Profile</h1><br>
-        <span><strong>user id</strong>: <%= user._id ? user._id : '' %></span><br>
-        <span class="fa fa-sign-out"><a href="/"> Sign out</a></span>
+        
         <hr>
         <div class="row">
          <div class="col-sm-6 ">
         <div class="jumbotron">
           <% if (user.local.username != null) { %>
             <img src="https://avatars.io/gravatar/<%= user.local.username %>/140" class="img-circle"><br>
-            <strong>Name</strong>: <%= user.local.username %><br>
-            <table>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Totales</th>
-                  <th>Ganadas</th>
-                  <th>Perdidas</th>
-                  <th>Empatadas</th>
-                </tr>
-                <tr>
-                     
-                     <td><%= user.local.totales%> </td>
-                     <td><%= user.local.ganadas %></td>
-                     <td><%= user.local.perdidas %></td>
-                     <td><%= user.local.empatadas %></td>
-                </tr>
+            <strong>Name</strong>: <%= user.local.username %><br><br><br>
+             <div class="row">
+                    <div class="offset-1 col-md-11">
+                       
+                        
+                
+                        <table>
+                            <thead>
+                                <tr>
+                                    
+                                    <th data-priority="2">Totales</th>
+                                    <th data-priority="4">Ganadas</th>
+                                    <th data-priority="3">Perdidas</th>
+                                    <th data-priority="5">Empatadas</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                   
+                                    <tr>
+                                      <td data-priority="2"><%= user.local.totales%> </td>
+                                      <td data-priority="3"><%= user.local.ganadas %></td>
+                                      <td data-priority="4"><%=  user.local.perdidas %></td>
+                                      <td data-priority="1"><%=  user.local.empatadas %></td
+                                     </tr>    
+                                  
+                                  
+                            </tbody>
+                        </table>
 
-              </table>
+                    </div>
+                </div>
 
           <% } %>
 
           <% if (user.local.username_facebook != null) { %>
             <h2 class="fa fa-facebook"> Facebook</h2><br>
             <img src="http://graph.facebook.com/<%= user.local.id %>/picture?type=large" class="img-circle"><br>
-            <strong>Name</strong>: <%= user.local.username_facebook %>
-            <table>
-                <tr>
-                  <th>Totales</th>
-                  <th>Ganadas</th>
-                  <th>Perdidas</th>
-                  <th>Empatadas</th>
-                </tr>
-                <tr>
-                     <td><%= user.local.totales %></td>
-                     <td><%= user.local.ganadas %></td>
-                     <td><%= user.local.perdidas %></td>
-                     <td><%= user.local.empatadas %></td>
-                </tr>
+            <strong>Name</strong>: <%= user.local.username_facebook %><br><br>
+             <div class="row">
+                    <div class="offset-1 col-md-11">
+                       
+                        
+                
+                        <table>
+                            <thead>
+                                <tr>
+                                    
+                                    <th data-priority="2">Totales</th>
+                                    <th data-priority="4">Ganadas</th>
+                                    <th data-priority="3">Perdidas</th>
+                                    <th data-priority="5">Empatadas</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                   
+                                    <tr>
+                                      <td data-priority="2"><%= user.local.totales%> </td>
+                                      <td data-priority="3"><%= user.local.ganadas %></td>
+                                      <td data-priority="4"><%=  user.local.perdidas %></td>
+                                      <td data-priority="1"><%=  user.local.empatadas %></td
+                                     </tr>    
+                                  
+                                  
+                            </tbody>
+                        </table>
 
-              </table>
+                    </div>
+                </div>
           <% } %>
 
           <% if (user.local.username_twitter != null) { %>
             <h2 class="fa fa-twitter"> Twitter</h2><br>
             <img src="https://twitter.com/<%= user.local.username_twitter %>/profile_image?size=original" class="img-circle"><br>
-            <strong>Name</strong>: <%= user.local.username_twitter %><br>
-            <table>
-                <tr>
-                  <th>Totales</th>
-                  <th>Ganadas</th>
-                  <th>Perdidas</th>
-                  <th>Empatadas</th>
-                </tr>
-                <tr>
-                     <td><%= user.local.totales%> </td>
-                     <td><%= user.local.ganadas %></td>
-                     <td><%= user.local.perdidas %></td>
-                     <td><%= user.local.empatadas %></td>
-                </tr>
+            <strong>Name</strong>: <%= user.local.username_twitter %><br><br><br>
+             <div class="row">
+                    <div class="offset-1 col-md-11">
+                       
+                        
+                
+                        <table>
+                            <thead>
+                                <tr>
+                                    
+                                    <th data-priority="2">Totales</th>
+                                    <th data-priority="4">Ganadas</th>
+                                    <th data-priority="3">Perdidas</th>
+                                    <th data-priority="5">Empatadas</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                   
+                                    <tr>
+                                      <td data-priority="2"><%= user.local.totales%> </td>
+                                      <td data-priority="3"><%= user.local.ganadas %></td>
+                                      <td data-priority="4"><%=  user.local.perdidas %></td>
+                                      <td data-priority="1"><%=  user.local.empatadas %></td
+                                     </tr>    
+                                  
+                                  
+                            </tbody>
+                        </table>
 
-              </table>
+                    </div>
+                </div>
           <% } %>
           <% if (user.local.username_github != null) { %>
             <h2 class="fa fa-github"> Github</h2><br>
@@ -132,12 +230,13 @@ th{
 
           <% } else { %>
 
-             <div class="login-form">
-               <h1>Juega al jueguito</h1>
+             <div class="login-form juego">
+               <h1 class="btn btn-info boto">Juega y diviertete</h1>
 
-               <button type="button" class="log-btn" onclick="window.location='/book';">Entrar al jueguito</button>
 
              </div>
+                            <button type="button" class="btn btn-danger boto1" onclick="window.location='/book';">Jugar</button>
+
 
           <% } %>
 
@@ -145,5 +244,7 @@ th{
 
   </div>
   </div>
+  </main>
+
   </body>
 </html>
