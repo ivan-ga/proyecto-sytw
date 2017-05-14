@@ -48,12 +48,8 @@ mongoose.connect(conexionBD.url);
 //Importando esquemas de BD
 const Estructura = require('./models/user.js');
 const userSchema = Estructura.User;
-//const MapaSchema = Estructura.Mapa;
-//console.log("Estructura:"+Estructura);
-//console.log("User:"+UserSchema);
-//console.log("Mapa:"+MapaSchema);
+
 const User = mongoose.model("User", userSchema);
-//const Mapa = mongoose.model("Mapa", MapaSchema);
 
 app.get('/m', (request, response) => {
 console.log("saddsadsadsada" );
@@ -122,7 +118,7 @@ console.log("saddsadsadsada" );
 app.get('/ranking', (req, res) => {
 //cursor = db.ciudades.find().sort({ciudad:1});
 
- User.find().sort('local.ganadas').find( function(err,data)
+ User.find().sort('-local.ganadas').find( function(err,data)
   {
       if(err)  console.error("Error:"+err);
 
