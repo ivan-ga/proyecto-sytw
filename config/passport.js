@@ -39,6 +39,7 @@ module.exports = function(passport) {
           newUser.local.perdidas = 0;
           newUser.local.totales = 0;
           newUser.local.empatadas = 0;
+          newUser.local.name = username;
           newUser.save(function(err) {
             if (err)
               throw err;
@@ -91,6 +92,7 @@ module.exports = function(passport) {
           newUser.local.ganadas = 0;
           newUser.local.perdidas = 0;
           newUser.local.totales = 0;
+          newUser.local.name = profile.name.givenName;
 
 
           newUser.save(function(err) {
@@ -127,6 +129,7 @@ module.exports = function(passport) {
           newUser.local.perdidas = 0;
           newUser.local.totales = 0;
           newUser.local.empatadas = 0;
+          newUser.local.name = profile.username;
 
 
           newUser.save(function(err) {
@@ -166,6 +169,7 @@ function(token, tokenSecret, profile, done) {
           newUser.local.displayName = profile.displayName;
           newUser.local.email = (profile.emails[0].value || '').toLowerCase();
           newUser.local.empatadas = 0;
+          newUser.local.name = profile.username;
           newUser.save(function(err) {
             if (err)
              throw err;

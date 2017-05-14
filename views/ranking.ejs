@@ -4,21 +4,45 @@
   <meta charset="UTF-8">
   <title>MY APP</title>
 </head>
+<style type="text/css">
+  ul{
+  border:1px solid black;
+  padding:4px;
+  cursor:grab;
+
+}
+li{
+  margin:8px;
+  
+  padding:4px;
+
+}
+th{
+    color:yellow;
+}
+</style>
 <body>
   May Node and Express be with you.
 
   <ul class="users">
-    
+           <tr>
+                  <th>Nombre</th>
+                  <th>Totales</th>
+                  <th>Ganadas</th>
+                  <th>Perdidas</th>
+                  <th>Empatadas</th>
+                </tr>
   <% for(var i=0; i < users.length; i++) {%>
     <li class="users">
+<tr>
 
-
-      <td><%= users[i].local.username%> </td>
+      <td><%= users[i].local.name%> </td>
       <td><%= users[i].local.totales%> </td>
       <td><%= users[i].local.ganadas %></td>
       <td><%=  users[i].local.perdidas %></td>
-      <td><%=  users[i].local.empatadas %></td>
-    </li>
+      <td><%=  users[i].local.empatadas %></td
+      </tr>    </li>
+
   <% } %>
   </ul>
 
