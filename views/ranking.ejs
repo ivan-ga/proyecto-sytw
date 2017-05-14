@@ -1,50 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>MY APP</title>
-</head>
-<style type="text/css">
-  ul{
-  border:1px solid black;
-  padding:4px;
-  cursor:grab;
 
-}
-li{
-  margin:8px;
-  
-  padding:4px;
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-}
-th{
-    color:yellow;
-}
-</style>
-<body>
-  May Node and Express be with you.
+        <title>Proyecto-DSI</title>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
-  <ul class="users">
-           <tr>
-                  <th>Nombre</th>
-                  <th>Totales</th>
-                  <th>Ganadas</th>
-                  <th>Perdidas</th>
-                  <th>Empatadas</th>
-                </tr>
-  <% for(var i=0; i < users.length; i++) {%>
-    <li class="users">
-<tr>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-      <td><%= users[i].local.name%> </td>
-      <td><%= users[i].local.totales%> </td>
-      <td><%= users[i].local.ganadas %></td>
-      <td><%=  users[i].local.perdidas %></td>
-      <td><%=  users[i].local.empatadas %></td
-      </tr>    </li>
 
-  <% } %>
-  </ul>
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet">
 
-</body>
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/table.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <header>
+            <!--Navbar-->
+            <nav class="navbar navbar-toggleable-md navbar-dark">
+                <div class="container">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                         <strong>Navbar</strong>
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarNav1">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                 <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                 <a class="nav-link" href="/juego">Juego</a>
+                                <!--<a class="link" href="/cambiarpass">Cambiar contraseña</a>-->
+                            </li>
+                            <li class="nav-item">
+                                 <a class="nav-link" href="/ranking">Ranking</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline waves-effect waves-light">
+                            <input class="form-control" type="text" placeholder="Search">
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <!--/.Navbar-->
+        </header>
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <!--Page heading-->
+                <div class="row">
+                    <div class="offset-1 col-md-11">
+                       
+                         <h1>Ranking 3nWin</h1>
+                 <ul class="users">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-priority="1">Nombre</th>
+                                    <th data-priority="2">Totales</th>
+                                    <th data-priority="4">Ganadas</th>
+                                    <th data-priority="3">Perdidas</th>
+                                    <th data-priority="5">Empatadas</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                   <% for(var i=0; i < users.length; i++) {%>
+                                    <li class="users">
+                                    <tr>
+                                      <td data-priority="1"><%= users[i].local.name%> </td>
+                                      <td data-priority="2"><%= users[i].local.totales%> </td>
+                                      <td data-priority="3"><%= users[i].local.ganadas %></td>
+                                      <td data-priority="4"><%=  users[i].local.perdidas %></td>
+                                      <td data-priority="1"><%=  users[i].local.empatadas %></td
+                                     </tr>    </li>
+                                  <% } %>
+                                  </ul>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--/.Main layout-->
+        </main>
+
+        <!--Footer-->
+        <footer class="page-footer center-on-small-only">
+            <!--Footer links-->
+            <div class="container-fluid">
+                <div class="row">
+                    <!--First column-->
+                    <div class="col-md-3 offset-lg-1 hidden-lg-down">
+                         <h5 class="title">Páginas de Autores</h5>
+                        <div class="row">
+                            <div class="offset-1 col-md-11">
+                                <ul>
+                                    <li>
+                                         <a href="https://ivan-ga.github.io/">Iván González Aguiar</a>
+                                    </li>
+                                    <li>
+                                         <a href="https://alu0100200393.github.io/">Miguel Parra Esquivel</a>
+                                    </li>
+                                    <li>
+                                         <a href="https://alu0100813272.github.io/">Jairo González Lemus</a>
+                                    </li>
+                                    <li>
+                                         <a href="https://alu0100785265.github.io/">José Lucas Ruiz Glez</a>
+                                    </li>
+                                  </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--/.First column-->
+                    <hr class="hidden-md-up">
+                    <!--Second column-->
+                    <div class="col-lg-4 col-md-8 offset-lg-1">
+                         <h5 class="title">Tecnologias Utilizadas</h5>
+
+                        <div class="row">
+                            <div class="offset-1 col-md-11">
+                                <ul>
+                                    <li>
+                                         <a href="#!">HTML</a>
+                                    </li>
+                                    <li>
+                                         <a href="#!">CSS</a>
+                                    </li>
+                                    <li>
+                                         <a href="#!">Javascrip</a>
+                                    </li>
+                                    <li>
+                                         <a href="#!">Sqlite</a>
+                                    </li>
+                                    <li>
+                                         <a href="#!">Express</a>
+                                    </li>
+                                    <li>
+                                         <a href="#!">Autentificacion con Oath</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--/.Third column-->
+                    <hr class="hidden-md-up">
+                    <!--Fourth column-->
+                    <div class="col-lg-2 col-md-4">
+                         <h5 class="title">Contactar</h5>
+                        <div class="row">
+                            <div class="offset-1 col-md-11">
+                                <ul>
+                                    <li>
+                                         <a href="https://www.facebook.com/profile.php?id=100016783155465">Facebook</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Fourth column-->
+                </div>
+            </div>
+            <!--/.Footer links-->
+
+
+            <!--Copyright-->
+            <div class="footer-copyright">
+                <div class="containter-fluid">© 2017 Copyright: <a href="https://github.com/ULL-ESIT-DSI-1617/proyecto-dsi-lucas-ivan-miguel-jairo"> Proyecto DSI </a>
+                </div>
+            </div>
+            <!--/.Copyright-->
+        </footer>
+        <!--/.Footer-->
+
+        <!-- SCRIPTS -->
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/tether.min.js"></script>
+
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="js/index.js"></script>
+        <!-- Cache Monet Image -->
+        <svg version="1.1" id="money">
+            <path d="M0,431.5h448v-288H0V431.5z M32,239.5c35.344,0,64-28.656,64-64h256c0,35.344,28.656,64,64,64v96c-35.344,0-64,28.656-64,64
+	H96c0-35.344-28.656-64-64-64V239.5z M144,287.5c0-44.188,35.813-80,80-80s80,35.813,80,80s-35.813,80-80,80S144,331.688,144,287.5z
+	 M512,79.5v320h-32v-288H32v-32H512z" />
+        </svg>
+        <script>
+            new WOW().init();
+        </script>
+
+    </body>
+
 </html>

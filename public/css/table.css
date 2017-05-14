@@ -1,0 +1,102 @@
+/*Lo siguiente es para la tabla*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Yellowtail);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+
+body{
+  background: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+}
+.container{
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+h1{
+  margin-top: 50px;
+  font-size: 3em;
+  border-bottom: 1px solid rgba(0,0,0,.3);
+  font-family: 'Yellowtail', cursive;
+  color: #000000;
+  text-shadow: 0 0 10px rgba(0,0,0,.4);
+}
+
+/*Table*/
+table{
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: #eee;
+  font-size: 1em;
+  box-shadow: 0 0 15px 10px rgba(0,0,0,.3);
+}
+td,th{
+  padding: 20px;
+}
+th{
+  text-align: left;
+  font-weight: bold;
+  background: #BEEB9F;
+}
+tr:not(.drawer):hover{
+  background-color: #ddd;
+  transition: background-color 0.5s;
+}
+
+/*Utility*/
+.shadow{
+  border-bottom: 3px solid rgba(0,0,0,.1);
+  opacity: .6;
+  background-color: #ddd;
+}
+/*Background Money SVG*/
+#money{
+  position: absolute;
+  top: 0;
+  left: -150px;
+  fill: #FFF;
+  z-index: -10;
+  opacity: 0.2;
+}
+
+/*Arrow Icons*/ 
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+/*More Column*/
+.more{
+  text-align: center;
+  display: none;
+}
+
+/************************
+    Media Queries
+************************/
+
+/* Gradually remove columns */
+@media (max-width: 800px){
+  [data-priority="7"],
+  [data-priority="6"]{
+    display: none;
+  }
+  h1{font-size: 2.5em;}
+}
+@media (max-width: 600px){
+  [data-priority="5"]{
+    display: none;
+  }
+  h1{font-size: 2em;}
+}
+@media (max-width: 500px){
+  [data-priority="4"]{
+    display: none;
+  }
+  h1{font-size: 1.5em;}
+}@media (max-width: 450px){
+  [data-priority="1"]{
+    display: none;
+  }
+}
+
