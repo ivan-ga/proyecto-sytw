@@ -33,7 +33,6 @@ module.exports = function(passport) {
         } else {
           var newUser = new User();
           newUser.local.username = username;
-          console.log(username+"goooooooo");
           newUser.local.password = newUser.generateHash(password);
           newUser.local.ganadas = 0;
           newUser.local.perdidas = 0;
@@ -144,9 +143,9 @@ module.exports = function(passport) {
 
 
 passport.use(new Strategy({
-  clientID: '4da3fc9817dc296aee71',
-  clientSecret: '0ef3f4b8fe00806df1ef8f734e2a47332918830f',
-  callbackURL: 'http://localhost:8080/login/github/return',
+  clientID: configAuth.githubAuth.clientID,
+  clientSecret: configAuth.githubAuth.clientSecret,
+  callbackURL: configAuth.githubAuth.callbackURL,
   profileFields: ['id', 'email', 'first_name', 'last_name'],
 
 },
@@ -168,12 +167,14 @@ function(token, tokenSecret, profile, done) {
           newUser.local.username_github    = profile.username;
           newUser.local.displayName = profile.displayName;
           newUser.local.email = (profile.emails[0].value || '').toLowerCase();
+          newUser.local.ganadas = 0;
+          newUser.local.perdidas = 0;
+          newUser.local.totales = 0;
           newUser.local.empatadas = 0;
           newUser.local.name = profile.username;
           newUser.save(function(err) {
             if (err)
              throw err;
-            console.log(newUser.github.username);
             return done(null, newUser);
           });
         }

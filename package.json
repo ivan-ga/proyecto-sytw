@@ -1,5 +1,5 @@
 {
-  "name": "express-authentication",
+  "name": "proyecto-dsi",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -24,5 +24,16 @@
     "passport-local": "~1.0.0",
     "passport-twitter": "^1.0.3",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-ESIT-DSI-1617/proyecto-dsi-lucas-ivan-miguel-jairo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-DSI-1617/proyecto-dsi-lucas-ivan-miguel-jairo.git/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-DSI-1617/proyecto-dsi-lucas-ivan-miguel-jairo.git#readme",
+
 }

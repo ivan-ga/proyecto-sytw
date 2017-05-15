@@ -10,9 +10,9 @@ module.exports = {
     consumerSecret: 'hEYxgG3oxjDR0R1t9EWZ98tBKZ1IlVacHAQn5LDuvCIgzJbc9q',
     callbackURL: 'http://localhost:8080/auth/twitter/callback',
   },
-  googleAuth: {
-    clientID: '262575533252-sviar9bm39g5c4dnlb6erkpvjme4hit2.apps.googleusercontent.com',
-    clientSecret: '1K1fRgOmy1WJK4_Z8ycGRyuz',
-    callbackURL: 'http://localhost:8080/login/twitter/return',
+  githubAuth: {
+    clientID: '4da3fc9817dc296aee71',
+    clientSecret: '0ef3f4b8fe00806df1ef8f734e2a47332918830f',
+    callbackURL: 'http://localhost:8080/login/github/return',
   },
 };
