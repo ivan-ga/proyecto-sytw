@@ -22,6 +22,8 @@ Una vez iniciada la sesión correctamente nos llevara al perfil en el que nos ap
 
 
  ![](https://3.bp.blogspot.com/-WNQ8vLrwlxc/WRjhgDcHjiI/AAAAAAAAAr8/RP_PTL7y660uXkMnImrgDFyOWVCYNRX2gCLcB/s320/jugo4.png)
+
+ 
 Y por el otro el acceso al juego de 3 en raya,cada partida que juegues te irá incrementando en total de partidas y la casilla de ganada,pérdida o empatada.
 
 
