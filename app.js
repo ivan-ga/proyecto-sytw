@@ -48,7 +48,7 @@ const userSchema = Estructura.User;
 
 const User = mongoose.model("User", userSchema);
 
-app.get('/datos_juego', (request, response) => {
+app.get('/m', (request, response) => {
 
     User.find({}, function(err,data)
     {
