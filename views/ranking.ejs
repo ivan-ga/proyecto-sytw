@@ -69,22 +69,27 @@
                         <table>
                             <thead>
                                 <tr>
+                                    <th data-priority="1">Posición</th>
                                     <th data-priority="1">Nombre</th>
                                     <th data-priority="2">Totales</th>
                                     <th data-priority="4">Ganadas</th>
                                     <th data-priority="3">Perdidas</th>
                                     <th data-priority="5">Empatadas</th>
+                                    <th data-priority="6">% Ganadas</th>
                                 </tr>
                             </thead>
                             <tbody> 
                                    <% for(var i=0; i < users.length; i++) {%>
                                     <li class="users">
                                     <tr>
-                                      <td data-priority="1"><%= users[i].local.name%> </td>
+                                      <td data-priority="1"><%= i+1 %> </td>
+                                      <td data-priority="2"><%= users[i].local.name%> </td>
+
                                       <td data-priority="2"><%= users[i].local.totales%> </td>
                                       <td data-priority="3"><%= users[i].local.ganadas %></td>
                                       <td data-priority="4"><%=  users[i].local.perdidas %></td>
-                                      <td data-priority="1"><%=  users[i].local.empatadas %></td>
+                                      <td data-priority="5"><%=  users[i].local.empatadas %></td>
+                                      <td data-priority="6"><%=  ((users[i].local.ganadas/users[i].local.totales)*100).toFixed(2) %>%</td>
                                      </tr>    </li>
                                   <% } %>
                                   </ul>
