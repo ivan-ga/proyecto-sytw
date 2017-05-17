@@ -5,7 +5,7 @@
 
 Aplicación web para el juego "3 en raya".
 
-A continuación se muestran las diferentes partes que tiene el proyecto de Desarrollo de Sistemas y Tecnologías Web
+A continuación se muestran las diferentes partes que tiene el proyecto de Desarrollo de Sistemas Informáticos
 -Lo primero que nos aparece al abrir la página es el home en el que se nos explica las diferentes tecnologías que se han utilizado en este proyecto y los diferentes tipos de inicio de sesión que hay siguiendo la estrategia de Passport Oauth con Facebook, Twitter, Github y Local.
 
  ![](https://1.bp.blogspot.com/-TFODb3gbnms/WRjhgFzcdRI/AAAAAAAAAr0/52F9D8KJJUURdEwNy45Bu98rcaSFXE-CQCLcB/s320/jugo1.png)
