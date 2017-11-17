@@ -55,45 +55,25 @@
 
     <main>
         <!--Main layout-->
-        <div class="container">
+       
+         <div ng-app="prueba" ng-controller="namesCtrl">
 
-            <!--Page heading-->
-            <div class="row">
-                <div class="col-md-12">
-                  <div class="row">
-                      <div class="col-md-6">
-                        <p align="center">3 EN RAYAS</p>
-                        <p align="center">
-                          <a href="/r_tresenraya"><img src="img/3_en_rayas_violeta.png" height="150" width="150"></a>
-                        </p>
-                      </div>
-                      <div class="col-md-6">
-                        <p align="center">AJEDREZ</p>
-                        <p align="center">
-                          <a href="#"><img src="img/ajedrez_violeta.png" height="150" width="150"></a>
-                        </p>
-                      </div>
-                  </div>
-                  <br><br>
-                  <div class="row">
-                      <div class="col-md-6">
-                        <p align="center">BUSCAMNIAS</p>
-                        <p align="center">
-                          <a href="#"><img src="img/buscaminas_violetas.png" height="150" width="150"></a>
-                        </p>
-                      </div>
-                      <div class="col-md-6">
-                        <p align="center">DAMAS</p>
-                        <p align="center">
-                          <a href="#"><img src="img/damas_violetas.png" height="150" width="150"></a>
-                        </p>
-                      </div>
-                  </div>
-                </div>
-            </div>
+<table border="1" width="100%">
+<tr>
+<th ng-click="orderByMe('name')">Name</th>
+<th ng-click="orderByMe('country')">Country</th>
+</tr>
+<tr ng-repeat="x in names | orderBy:myOrderBy">
+<td>{{x.name}}</td>
+<td>{{x.country}}</td>
+</tr>
+</table>
+
+</div>
 
 
-        </div>
+                 
+        
 
         <!--/.Main layout-->
     </main>
@@ -130,6 +110,31 @@
             new WOW().init();
     </script>
 
+
+<script>
+angular.module('prueba', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        {name:'Jani',country:'Norway'},
+        {name:'Carl',country:'Sweden'},
+        {name:'Margareth',country:'England'},
+        {name:'Hege',country:'Norway'},
+        {name:'Joe',country:'Denmark'},
+        {name:'Gustav',country:'Sweden'},
+        {name:'Birgit',country:'Denmark'},
+        {name:'Mary',country:'England'},
+        {name:'Kai',country:'Norway'}
+        ];
+    $scope.orderByMe = function(x) {
+        $scope.myOrderBy = x;
+    }
+});
+</script>
+
+
+
+
+
+
 </body>
 
 </html>
@@ -145,3 +150,4 @@
     <p>Welcome to <%= title %></p>
   </body>
 </html-->
+

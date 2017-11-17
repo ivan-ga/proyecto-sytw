@@ -3,31 +3,31 @@
   /*<!-- Template styles -->*/
    /* <style rel="stylesheet">*/
         /* TEMPLATE STYLES */
-        
+
         main {
             margin-top: 3rem;
         }
-        
+
         main .card {
             margin-bottom: 2rem;
         }
-        
+
         @media only screen and (max-width: 768px) {
             .read-more {
                 text-align: center;
             }
         }
-        
+
         .navbar {
-            background-color: #0f6256;
+            background-color: #2c0f62;
         }
-        
+
         footer.page-footer {
-            background-color: #0f6256;
+            background-color: #2c0f62;
             margin-top: 2rem;
         }
-        
-        
+
+
 /*
     Note: It is best to use a less version of this file ( see http://css2less.cc
     For the media queries use @screen-sm-min instead of 768px.
@@ -44,14 +44,14 @@
     text-align: center;
 	line-height: 300%;
 }
-	
+
 .omb_login .omb_socialButtons a {
-	color: white; // In yourUse @body-bg 
+	color: white; // In yourUse @body-bg
 	opacity:0.9;
 }
 .omb_login .omb_socialButtons a:hover {
     color: white;
-	opacity:10;    	
+	opacity:10;
 }
 
 /*.button.github {*/
@@ -60,26 +60,27 @@
 
 
 .omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;
-    /*margin-left : -10px;
-    /*padding : 25px ;*/ 
-    
+     border-radius:  10px;
+     margin-left: 0px;
+
 }
 .omb_login .omb_socialButtons .omb_btn-facebook:hover {background: #172d5e}
 
 
 .omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;
-   /*margin-left : -5px; */
-    
+   border-radius:  10px;
+   margin-left: 0px;
+
 }
 .omb_login .omb_socialButtons .omb_btn-twitter:hover {background: #043d52}
 
 
 .omb_login .omb_socialButtons .omb_btn-github {background: #171515;
-    /*margin-left : -30px;*/
-    /*padding : 25px ;*/
+      border-radius:  10px;
+   margin-left: 0px;
 }
-.omb_login .omb_socialButtons .omb_btn-github :hover {
-    background: #858180 }
+.omb_login .omb_socialButtons .omb_btn-github:hover {
+     opacity:0.5; }
 
 
 
@@ -108,7 +109,7 @@
 	background-color: white;
 	width: 3em;
 	text-align: center;
-}			
+}
 
 .omb_login .omb_loginForm .input-group.i {
 	width: 2em;
@@ -117,13 +118,10 @@
     color: red;
 }
 
-	
+
 @media (min-width: 768px) {
     .omb_login .omb_forgotPwd {
         text-align: right;
 		margin-top:10px;
- 	}		
+ 	}
 }
- 
-        
-  

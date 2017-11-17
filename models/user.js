@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
     perdidas: Number,
     totales:Number,
     empatadas:Number,
-  },/*
+  },
   facebook: {
     id: String,
     token: String,
@@ -35,7 +35,7 @@ var userSchema = mongoose.Schema({
     displayName: String,
     username: String,
     email: String,
-  },*/
+  },
 });
 
 userSchema.methods.generateHash = function(password) {

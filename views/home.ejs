@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app ="myApp">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,10 +56,16 @@ border-radius: 50%;}
                             <a class="nav-link" href="/">Home </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/games">Juego</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/ranking">Ranking</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/">Perfil</a>
+                        </li>
+                             <li class="nav-item">
+                             <a class="nav-link" href="/logout">Cerrar</a>
                         </li>
                     </ul>
                     <form class="form-inline waves-effect waves-light">
@@ -240,6 +246,33 @@ border-radius: 50%;}
   </div>
   </div>
   </main>
+  
+<!--Footer-->
+  <footer class="page-footer center-on-small-only">
 
+    <div ng-controller="PieCtrl">
+      <div ng-include src="footer.url"></div>
+    </div>
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
+  <script type="text/javascript" src="js/footer.js"></script>
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/tether.min.js"></script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
   </body>
 </html>

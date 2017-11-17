@@ -103,12 +103,11 @@ app.get('/ranking', (req, res) => {
   {
       if(err)  console.error("Error:"+err);
 
-        res.render("ranking",{users: data})
+        res.render("ranking",{users: data,title: "Otro"})
     })
 
 
 });
-
 
 
 app.use(function(req, res, next) {
