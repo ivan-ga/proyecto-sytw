@@ -11,7 +11,7 @@ router.get('/signup', function(req, res) {
 });
 
 router.get('/home', isLoggedIn, function(req, res) {
-  console.log("estoy akiii")
+//  console.log("estoy akiii")
   res.render('home.ejs', { user: req.user });
 });
 
@@ -22,11 +22,15 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/games', isLoggedIn, function(req, res) {
-  res.render('games.ejs', { user: req.user,title: "Ppepepp" });
+  res.render('games.ejs', { user: req.user,title: "Juegos" });
 });
-router.post('/games', isLoggedIn, function(req, res) {
-  res.render('games.ejs', { user: req.user,title: "Ppepepp" });
+
+router.get('/rankings', isLoggedIn, function(req, res) {
+  res.render('rankings.ejs', { user: req.user,title: "Rankings" });
 });
+// router.post('/games', isLoggedIn, function(req, res) {
+//   res.render('games.ejs', { user: req.user,title: "Juegos" });
+// });
 
 router.get('/r_tresenraya', isLoggedIn, function(req, res) {
   res.render('r_tresenraya.ejs', { user: req.user,title: "Ppepepp" });

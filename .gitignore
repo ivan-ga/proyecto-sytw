@@ -2,3 +2,7 @@ node_modules/
 npm-debug.log
 data
 auth.js
+.DS_Store
+Icon
+Icon?
+.log
