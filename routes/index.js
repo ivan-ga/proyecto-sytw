@@ -4,7 +4,14 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
+ 
 });
+
+router.get('/ver', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+  res.send("Usuario");
+});
+
 
 router.get('/signup', function(req, res) {
   res.render('signup.ejs', { message: req.flash('signupMessage') });
@@ -12,7 +19,7 @@ router.get('/signup', function(req, res) {
 
 router.get('/home', isLoggedIn, function(req, res) {
 //  console.log("estoy akiii")
-  res.render('home.ejs', { user: req.user });
+  res.render('home.ejs', { user: req.user});
 });
 
 

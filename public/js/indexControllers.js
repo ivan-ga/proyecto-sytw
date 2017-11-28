@@ -63,10 +63,11 @@ function controladorPrincipal($http, $scope){
                      
                                 
                                vm.fdatos.username="";
-                                           vm.fdatos.password="";
-                                
- home.datos = res.data; 
- console.log(home.datos);
+                               vm.fdatos.password="";
+                               home.datos = res.data; 
+                               
+                               console.log(home);
+                               //Crea un alerta
                                         //vm.url("www.google.com/home");
               //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
                     },function (res) {
@@ -92,17 +93,25 @@ function controladorRegistro($http){
         // declaro la función enviar
         rg.registrar = function(){
             console.log(  rg.registro);
-                // $http.post("/login", mensaje)
+            if(rg.registro.password === rg.registro.passwordh){
+                 //alert("Contraseña distintaasdddddd");
                  $http.post("/registro",   rg.registro).then(function(res){
-                     
-                                 console.log(res.data);
-                                        //  rg.registro.username="";
-                                         // rg.registro.password="";
-                                          // rg.registro.passwordh="";
-              //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
+                                console.log(res.data);
+                                rg.registro.username="";
+                                rg.registro.password="";
+                                rg.registro.passwordh="";
+                                //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
                     },function (res) {
-                         console.log(res.data);
+                        //Si lo antriro no se ejecuta.
+                        // console.log(res.data);
+                         console.log(res)
+                         //alert("Usuario Registrado")
                      });
+            }else{
+                rg.registro.password="";
+                rg.registro.passwordh="";
+                alert("Contraseñas Distintas");
+            }      
         }
 }
 
