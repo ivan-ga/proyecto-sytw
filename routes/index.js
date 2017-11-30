@@ -36,6 +36,10 @@ router.get('/r_damas', isLoggedIn, function(req, res) {
   res.render('r_damas.ejs', { user: req.user,title: "Damas" });
 });
 
+router.get('/r_ajedrez', isLoggedIn, function(req, res) {
+  res.render('r_ajedrez.ejs', { user: req.user,title: "Ajedrez" });
+});
+
 router.get('/r_tresenraya', isLoggedIn, function(req, res) {
   res.render('r_tresenraya.ejs', { user: req.user,title: "Tres en raya" });
 });
