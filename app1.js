@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var multer = require('multer')
+
 var port = process.env.PORT || 8080;
 
 var passport = require('passport');
@@ -16,8 +16,6 @@ var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-//var upload = require('./routes/upload');
-
 
 
 var app = express();
@@ -40,7 +38,6 @@ require('./config/passport')(passport);
 
 app.use('/', routes);
 app.use('/users', users);
-//app.use('/upload', upload)
 
 const conexionBD = require('./config/database.js');
 mongoose.connect(conexionBD.url);
@@ -112,37 +109,6 @@ app.get('/ranking', (req, res) => {
 
 });
 
-//////////////////////SUBIR IMAGEN PARA PERFIL DE USUARIO
-
-var storage = multer.diskStorage({
-	destination: function(req, file, callback) {
-		callback(null, './public/img/uploads') 
-	},
-	filename: function(req, file, callback) {
-		callback(null, req.session.passport.user + path.extname(file.originalname))
-		
-	}
-})
-
-app.post('/home', function(req, res) {
-	var upload = multer({
-		storage: storage,
-		fileFilter: function(req, file, callback) {
-			var ext = path.extname(file.originalname)
-			if (ext !== '.jpg') {
-				return callback(res.end('Only jpg images are allowed'), null)
-			}
-			callback(null, true)
-		}
-	}).single('userFile');
-	upload(req, res, function(err) {
-	  
-	})
-	
-	res.redirect('back'); //refresca la página después de cambiar la foto de perfil
-})
-
-//////////////////////TERMINADO SUBIR IMAGEN
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
