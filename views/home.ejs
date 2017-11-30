@@ -198,30 +198,6 @@ border-radius: 50%;}
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
   
-  <script>
-      
-      $('#imageInput').change(function(){
-    var frm = new FormData();
-    frm.append('imageInput', input.files[0]);
-    $.ajax({
-        method: 'POST',
-        address: './public/css/img/pepe.jpg',
-        data: frm,
-        contentType: false,
-        processData: false,
-        cache: false
-    });
-});
-      
-  </script>
-  
-    <script>
-          $(document).ready(function(){ 
-          $(form).on('submit', function(){ 
-                location.reload();
-          });
-        })
-    </script>
   
   </body>
 </html>
