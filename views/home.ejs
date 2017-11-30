@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Proyecto-DSI</title>
+    <title>Proyecto-SYTW</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
@@ -27,9 +27,7 @@
 <style type="text/css">
 img { width: 140px; height: 140px; border-radius: 50%!important }
 .juego{
-  background: url(https://1.bp.blogspot.com/-U4nLweOdSGI/WRiV5gQMLUI/AAAAAAAAArY/-ZvK4c810cUnhz5pWOm1ohSRfC0E2i4bACLcB/s320/juego.png);
-  width: 500px;
-  height:350px;
+  
 }
 .boto{
 border-radius: 50%;}
@@ -48,7 +46,7 @@ border-radius: 50%;}
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <strong>Proyecto DSI</strong>
+                    <strong>Proyecto SYTW</strong>
                 </a>
                 <div class="collapse navbar-collapse" id="navbarNav1">
                     <ul class="navbar-nav mr-auto">
@@ -83,41 +81,23 @@ border-radius: 50%;}
         
         <hr>
         <div class="row">
-         <div class="col-sm-6 ">
-        <div class="jumbotron">
-          <% if (user.local.username != null) { %>
-            <img src="https://avatars.io/gravatar/<%= user.local.username %>/140" class="img-circle"><br>
-            <strong>Name</strong>: <%= user.local.username %><br><br><br>
-             <div class="row">
-                    <div class="offset-1 col-md-11">
-                       
-                        
+         <div class="col-sm-4 offset-1 ">
+            <div class="">
+              <% if (user.local.username != null) { %>
+                <img src="img/uploads/<%=user.id%>.jpg" class="img-circle" onerror="this.src='https://avatars.io/gravatar/<%= user.local.username %>/140'"><br>
+                <strong>Name</strong>: <%= user.local.username %><br><br><br>
+                <strong>Cambiar imagen de perfil:</strong>
+                <br>
+                 <form id="uploadForm" enctype="multipart/form-data" action="/home" method="post">
+		            <input type="file" name="userFile" />
+		            <input type="submit" value="Upload File" name="submit" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
+	           </form>  
                 
-                        <table>
-                            <thead>
-                                <tr>
-                                    
-                                    <th data-priority="2">Totales</th>
-                                    <th data-priority="4">Ganadas</th>
-                                    <th data-priority="3">Perdidas</th>
-                                    <th data-priority="5">Empatadas</th>
-                                </tr>
-                            </thead>
-                            <tbody> 
-                                   
-                                    <tr>
-                                      <td data-priority="2"><%= user.local.totales%> </td>
-                                      <td data-priority="3"><%= user.local.ganadas %></td>
-                                      <td data-priority="4"><%=  user.local.perdidas %></td>
-                                      <td data-priority="1"><%=  user.local.empatadas %></td>
-                                     </tr>    
-                                  
-                                  
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
+            </div>
+        </div>
+            
+    <div class="col-sm-6 ">
+        
 
           <% } %>
 
@@ -125,99 +105,27 @@ border-radius: 50%;}
             <h2 class="fa fa-facebook"> Facebook</h2><br>
             <img src="http://graph.facebook.com/<%= user.local.id %>/picture?type=large" class="img-circle"><br>
             <strong>Name</strong>: <%= user.local.username_facebook %><br><br>
-             <div class="row">
-                    <div class="offset-1 col-md-11">
-                       
-                        
-                
-                        <table>
-                            <thead>
-                                <tr>
-                                    
-                                    <th data-priority="2">Totales</th>
-                                    <th data-priority="4">Ganadas</th>
-                                    <th data-priority="3">Perdidas</th>
-                                    <th data-priority="5">Empatadas</th>
-                                </tr>
-                            </thead>
-                            <tbody> 
-                                   
-                                    <tr>
-                                      <td data-priority="2"><%= user.local.totales%> </td>
-                                      <td data-priority="3"><%= user.local.ganadas %></td>
-                                      <td data-priority="4"><%=  user.local.perdidas %></td>
-                                      <td data-priority="1"><%=  user.local.empatadas %></td
-                                     </tr>    
-                                  
-                                  
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
+             
           <% } %>
 
           <% if (user.local.username_twitter != null) { %>
             <h2 class="fa fa-twitter"> Twitter</h2><br>
             <img src="https://twitter.com/<%= user.local.username_twitter %>/profile_image?size=original" class="img-circle"><br>
             <strong>Name</strong>: <%= user.local.username_twitter %><br><br><br>
-             <div class="row">
-                    <div class="offset-1 col-md-11">
-                       
-                        
-                
-                        <table>
-                            <thead>
-                                <tr>
-                                    
-                                    <th data-priority="2">Totales</th>
-                                    <th data-priority="4">Ganadas</th>
-                                    <th data-priority="3">Perdidas</th>
-                                    <th data-priority="5">Empatadas</th>
-                                </tr>
-                            </thead>
-                            <tbody> 
-                                   
-                                    <tr>
-                                      <td data-priority="2"><%= user.local.totales%> </td>
-                                      <td data-priority="3"><%= user.local.ganadas %></td>
-                                      <td data-priority="4"><%=  user.local.perdidas %></td>
-                                      <td data-priority="1"><%=  user.local.empatadas %></td
-                                     </tr>    
-                                  
-                                  
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
+             
           <% } %>
           <% if (user.local.username_github != null) { %>
             <h2 class="fa fa-github"> Github</h2><br>
             <img src="https://avatars2.githubusercontent.com/u/<%= user.local.id %>" class="img-circle"><br>
             <strong>Name</strong>: <%= user.local.username_github %><br>
-            <table>
-                <tr>
-                  <th>Totales</th>
-                  <th>Ganadas</th>
-                  <th>Perdidas</th>
-                  <th>Empatadas</th>
-                </tr>
-                <tr>
-                     <td><%= user.local.totales%> </td>
-                     <td><%= user.local.ganadas %></td>
-                     <td><%= user.local.perdidas %></td>
-                     <td><%= user.local.empatadas %></td>
-                </tr>
-
-              </table>
+            
+            
+            
           <% } %>
 
-        </div>
+       
 
-    </div>
-    <div class="col-sm-5 ">
-            <div class="well">
+    
 
           <% if (!user) { %>
 
@@ -231,18 +139,33 @@ border-radius: 50%;}
 
           <% } else { %>
 
-             <div class="login-form juego">
-               <h1 class="btn btn-info boto">Juega y diviertete</h1>
 
-
-             </div>
-                            <button type="button" class="btn btn-danger boto1" onclick="window.location='/book';">Jugar</button>
+            
+                           
 
 
           <% } %>
 
- </div>
+          
+            <table>
+                <tr>
+                <th>Juego</th>
+                  <th>Totales</th>
+                  <th>Ganadas</th>
+                  <th>Perdidas</th>
+                  <th>Empatadas</th>
+                </tr>
+                <tr>
+                    <td>Buscaminas</td>
+                     <td><%= user.local.totales%> </td>
+                     <td><%= user.local.ganadas %></td>
+                     <td><%= user.local.perdidas %></td>
+                     <td><%= user.local.empatadas %></td>
+                </tr>
 
+              </table>
+        </div>
+     </div>
   </div>
   </div>
   </main>
@@ -261,7 +184,7 @@ border-radius: 50%;}
 
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
-  <script type="text/javascript" src="js/footer.js"></script>
+  <script type="text/javascript" src="js/myapp.js"></script>
 
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
@@ -274,5 +197,7 @@ border-radius: 50%;}
 
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
+  
+  
   </body>
 </html>

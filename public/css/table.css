@@ -37,7 +37,8 @@ td,th{
 th{
   text-align: left;
   font-weight: bold;
-  background: #BEEB9F;
+  background: #2c0f62;
+  color: white;
 }
 tr:not(.drawer):hover{
   background-color: #ddd;
