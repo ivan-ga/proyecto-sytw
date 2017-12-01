@@ -5,6 +5,9 @@ myApp.controller("PieCtrl", function($scope) {
 });
 
 
+myApp.controller("HeaderCtrl", function($scope) {
+  $scope.header = {name: "header.html", url: "header.html"};
+});
 
 myApp.controller("controladorConMetodos", function($scope){
 
@@ -100,6 +103,10 @@ function controladorRegistro($http){
                                 rg.registro.username="";
                                 rg.registro.password="";
                                 rg.registro.passwordh="";
+                         
+                                
+                                
+                                
                                 //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
                     },function (res) {
                         //Si lo antriro no se ejecuta.

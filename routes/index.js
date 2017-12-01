@@ -3,8 +3,7 @@ var passport = require('passport');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
- 
+  res.render('index', { title: 'Express', user: req.user });
 });
 
 router.get('/ver', function(req, res, next) {
@@ -39,6 +38,12 @@ router.get('/rankings', isLoggedIn, function(req, res) {
 //   res.render('games.ejs', { user: req.user,title: "Juegos" });
 // });
 
+//Ira al juego de buscaminas
+router.get('/r_buscaminas', isLoggedIn, function(req, res) {
+  res.render('r_buscaminas.ejs', { user: req.user,title: "Buscaminas" });
+});
+
+
 router.get('/r_damas', isLoggedIn, function(req, res) {
   res.render('r_damas.ejs', { user: req.user,title: "Damas" });
 });
@@ -49,8 +54,6 @@ router.get('/r_tresenraya', isLoggedIn, function(req, res) {
 router.post('/r_tresenraya', isLoggedIn, function(req, res) {
   res.render('r_tresenraya.ejs', { user: req.user,title: "Tres en raya" });
 });
-
-
 
 
 router.post('/registro', passport.authenticate('local-signup', {

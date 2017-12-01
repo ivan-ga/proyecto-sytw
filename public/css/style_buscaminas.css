@@ -1,0 +1,18 @@
+            .tablero{
+				width: 416px;
+				height: 416px;							
+			}
+
+			.tablero div{
+				width: 50px;
+				height: 50px;
+				border: 1px solid black;
+				float: left;
+				background-color: #05abe0;				
+			
+				text-align: center;
+			}
+			
+			
+			
+			/*#05abe0*/

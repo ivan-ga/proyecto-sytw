@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+<head>
+  <meta charset="UTF-8">
+  <title>Buscaminas</title>
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+      <!-- Bootstrap core CSS -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Material Design Bootstrap -->
+      <link href="css/mdb.min.css" rel="stylesheet">
+      <link href="css/mdb.min.css" rel="stylesheet">
+
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+      <link href="css/style.css" rel="stylesheet">
+
+      <!-- CSS DAMAS -->
+      <link href="css/style_buscaminas.css" rel="stylesheet">
+
+</head>
+
+<body  onload="cargarTablero();">
+  <header>
+    <div ng-controller="HeaderCtrl">
+      <div ng-include src="header.url"></div>
+    </div>
+  </header>
+  <main class="container-fluid">
+ 
+ 
+      <div class="row">
+              <div class="col-xs-11 col-sm-11"> 
+                   <h1 class="text-center"><strong>BUSCAMINAS</strong></h1>
+              </div>
+      </div>
+      
+      <div class="row">
+             <div class="col-xs-4 col-sm-4" align="right" > 
+                      <button type="button" class="btn btn-primary" onclick="resetTablero();" >Empezar</button>
+              </div>
+              <div class="col-xs-2 col-sm-2" style="background:red"> 
+                     <div id="tablerominas" class="tablero"></div>
+              </div>
+      </div>
+      
+  </main>
+  <!--Footer-->
+  <footer class="page-footer center-on-small-only">
+    <div ng-controller="PieCtrl">
+      <div ng-include src="footer.url"></div>
+    </div>
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+
+
+  <script  src="js/juegos/buscaminas.js"></script>
+
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
+  <script type="text/javascript" src="js/myapp.js"></script>
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/tether.min.js"></script>
+
+
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+
+  <script>
+          new WOW().init();
+  </script>
+
+
+
+</body>
+</html>
