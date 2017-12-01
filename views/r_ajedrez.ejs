@@ -28,11 +28,19 @@
     </div>
   </header>
   <br>
+  <div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
   <h1 class="text-center"><strong>AJEDREZ</strong></h1>
-
+  </div>
+  </div>
   <!-- <div id="board"></div> -->
   
-  <div id="board" style="width: 400px"></div>
+<script src="js/ajedrez/chess.js"></script>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4" align="center"><div id="board"  style="width: 425px" ></div></div>
+</div>
   
   <!--Footer-->
   <footer class="page-footer center-on-small-only">
@@ -48,21 +56,15 @@
 
   <!-- Ajedrez -->
   
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js'></script>
+
 
 <script src="js/chessboard.js"></script>
 
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
   <script type="text/javascript" src="js/myapp.js"></script>
-
-  <script type="text/javascript" src="js/json3.min.js"></script>
-
-  <!-- JQuery -->
-  <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-
-  <!-- Bootstrap tooltips -->
+  
+    <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="js/tether.min.js"></script>
 
   <!-- Bootstrap core JavaScript -->
@@ -71,24 +73,71 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
 
-  <script>
+  <!-- JQuery -->
+  <script src="js/ajedrez/json3.min.js"></script>
+<script src="js/ajedrez/jquery-1.10.1.min.js"></script>
+<script src="js/ajedrez/chessboard.js"></script>
+<script>
 var init = function() {
 
 //--- start example JS ---
-var cfg = {
-  position: 'start'
+var board,
+  game = new Chess();
+
+// do not pick up pieces if the game is over
+// only pick up pieces for White
+var onDragStart = function(source, piece, position, orientation) {
+  if (game.in_checkmate() === true || game.in_draw() === true ||
+    piece.search(/^b/) !== -1) {
+    return false;
+  }
 };
-var board = ChessBoard('board', cfg);
+
+var makeRandomMove = function() {
+  var possibleMoves = game.moves();
+
+  // game over
+  if (possibleMoves.length === 0) return;
+
+  var randomIndex = Math.floor(Math.random() * possibleMoves.length);
+  game.move(possibleMoves[randomIndex]);
+  board.position(game.fen());
+};
+
+var onDrop = function(source, target) {
+  // see if the move is legal
+  var move = game.move({
+    from: source,
+    to: target,
+    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+  });
+
+  // illegal move
+  if (move === null) return 'snapback';
+
+  // make random legal move for black
+  window.setTimeout(makeRandomMove, 250);
+};
+
+// update the board position after the piece snap
+// for castling, en passant, pawn promotion
+var onSnapEnd = function() {
+  board.position(game.fen());
+};
+
+var cfg = {
+  draggable: true,
+  position: 'start',
+  onDragStart: onDragStart,
+  onDrop: onDrop,
+  onSnapEnd: onSnapEnd
+};
+board = ChessBoard('board', cfg);
 //--- end example JS ---
 
 }; // end init()
 $(document).ready(init);
-
-//new WOW().init();
-
-  </script>
-
-
+</script>
 
 </body>
 </html>
