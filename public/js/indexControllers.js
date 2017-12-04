@@ -11,10 +11,10 @@ myApp.controller("controladorConMetodos", function($scope){
           $scope.form=false;
         // $scope.ocultocss='display: initial;';
         // $scope.form=true;
-        
 
 
-   
+
+
            $scope.ShowForm=function(){
                    $scope.estilos={display:"block"};
                   $scope.form=true;
@@ -29,8 +29,8 @@ myApp.controller("controladorConMetodos", function($scope){
  myApp.controller('MainCtrl', function ($scope) {
   $scope.usuario = {username: $scope.usuario.username ,
                      password: $scope.usuario.password,}
-   
-   
+
+
   $scope.submitForm = function (usuario) {
 
     alert('Form submitted with' + JSON.stringify( usuario));
@@ -38,10 +38,10 @@ myApp.controller("controladorConMetodos", function($scope){
 });
 
 myApp.controller("dentro", function($scope){
-        
-       
-        /*aki funcion sumirt*/ 
-      
+
+
+        /*aki funcion sumirt*/
+
         //Poner esto$scope.chuchu.mierda= $scope.hola;
 });
 
@@ -60,12 +60,12 @@ function controladorPrincipal($http, $scope){
         vm.enviar = function(){
                 // $http.post("/login", mensaje)
                  $http.post("/login",  vm.fdatos).then(function(res){
-                     
-                                
+
+
                                vm.fdatos.username="";
                                            vm.fdatos.password="";
-                                
- home.datos = res.data; 
+
+ home.datos = res.data;
  console.log(home.datos);
                                         //vm.url("www.google.com/home");
               //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
@@ -82,11 +82,11 @@ myApp.controller('registroCtrl', ['$http',controladorRegistro ]);
 
 function controladorRegistro($http){
         var rg=this;
-    
+
         //inicializo un objeto en los datos de formulario
         //Primero aki dentro despues html coge lso dao y lo pasa.
         rg.registro = {};
-        
+
         //var mensaje = {username: "pepe" ,password: "Otormas"}
         //console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" );
         // declaro la función enviar
@@ -94,7 +94,7 @@ function controladorRegistro($http){
             console.log(  rg.registro);
                 // $http.post("/login", mensaje)
                  $http.post("/registro",   rg.registro).then(function(res){
-                     
+
                                  console.log(res.data);
                                         //  rg.registro.username="";
                                          // rg.registro.password="";
@@ -108,19 +108,19 @@ function controladorRegistro($http){
 
 
 
-        
-        
+
+
 myApp.controller("verTextRS",   function($scope) {
-   
+
  $scope.Github="Github";
- 
+
  var nuevo = "";
  setInterval( nuevo=function otro(){
-            
+
                 var width = window.innerWidth
 || document.documentElement.clientWidth
 || document.body.clientWidth;
- 
+
 var height = window.innerHeight
 || document.documentElement.clientHeight
 || document.body.clientHeight;
@@ -137,21 +137,19 @@ return width
 
 
 if(nuevo<1200){
-      console.log("soy chikitooo");  
-   
+      console.log("soy chikitooo");
+
       $scope.Github = "";
 }else{
-    $scope.Github = "Github" 
+    $scope.Github = "Github"
 }
 
- console.log("estoy afuera "+$scope.Github); 
- 
- 
- 
+ console.log("estoy afuera "+$scope.Github);
+
+
+
 }
 
- 
+
 
 );
-
-        

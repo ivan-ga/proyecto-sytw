@@ -97,13 +97,28 @@ app.get('/m', (request, response) => {
 
 
 
-app.get('/ranking', (req, res) => {
+// app.get('/ranking', (req, res) => {
+//
+//  User.find().sort('-local.ganadas').find( function(err,data)
+//   {
+//       if(err)  console.error("Error:"+err);
+//
+//         res.render("ranking",{users: data,title: "Otro"})
+//     })
+//
+//
+// });
+
+
+
+
+app.get('/r_tresenraya', (req, res) => {
 
  User.find().sort('-local.ganadas').find( function(err,data)
   {
       if(err)  console.error("Error:"+err);
 
-        res.render("ranking",{users: data,title: "Otro"})
+        res.render("r_tresenraya",{users: data})
     })
 
 
