@@ -45,7 +45,9 @@ router.get('/g_tresenraya', isLoggedIn, function(req, res) {
 });
 
 
-
+router.get('/g_ajedrez', isLoggedIn, function(req, res) {
+  res.render('g_ajedrez.ejs', { user: req.user,title: "Ajedrez" });
+});
 
 
 router.post('/registro', passport.authenticate('local-signup', {

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+<head>
+  <meta charset="UTF-8">
+  <title>Ajedrez</title>
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+      <!-- Bootstrap core CSS -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Material Design Bootstrap -->
+      <link href="css/mdb.min.css" rel="stylesheet">
+      <link href="css/mdb.min.css" rel="stylesheet">
+
+      <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+      <link href="css/style.css" rel="stylesheet">
+
+
+      <link rel="stylesheet" href="css/chessboard.css" />
+
+</head>
+
+<body>
+  <header>
+    <div ng-controller="HeaderCtrl">
+      <div ng-include src="header.url"></div>
+    </div>
+  </header>
+  <br>
+  <div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+  <h1 class="text-center"><strong>AJEDREZ</strong></h1>
+  </div>
+  </div>
+  <!-- <div id="board"></div> -->
+  
+<script src="js/ajedrez/chess.js"></script>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4" align="center"><div id="board"  style="width: 425px" ></div></div>
+</div>
+  
+  <!--Footer-->
+  <footer class="page-footer center-on-small-only">
+
+    <div ng-controller="PieCtrl">
+      <div ng-include src="footer.url"></div>
+    </div>
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+
+  <!-- Ajedrez -->
+  
+
+
+<script src="js/chessboard.js"></script>
+
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
+  <script type="text/javascript" src="js/myapp.js"></script>
+  
+    <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/tether.min.js"></script>
+
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+
+  <!-- JQuery -->
+  <script src="js/ajedrez/json3.min.js"></script>
+<script src="js/ajedrez/jquery-1.10.1.min.js"></script>
+<script src="js/ajedrez/chessboard.js"></script>
+<script>
+var init = function() {
+
+//--- start example JS ---
+var board,
+  game = new Chess();
+
+// do not pick up pieces if the game is over
+// only pick up pieces for White
+var onDragStart = function(source, piece, position, orientation) {
+  if (game.in_checkmate() === true || game.in_draw() === true ||
+    piece.search(/^b/) !== -1) {
+    return false;
+  }
+};
+
+var makeRandomMove = function() {
+  var possibleMoves = game.moves();
+
+  // game over
+  if (possibleMoves.length === 0) return;
+
+  var randomIndex = Math.floor(Math.random() * possibleMoves.length);
+  game.move(possibleMoves[randomIndex]);
+  board.position(game.fen());
+};
+
+var onDrop = function(source, target) {
+  // see if the move is legal
+  var move = game.move({
+    from: source,
+    to: target,
+    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+  });
+
+  // illegal move
+  if (move === null) return 'snapback';
+
+  // make random legal move for black
+  window.setTimeout(makeRandomMove, 250);
+};
+
+// update the board position after the piece snap
+// for castling, en passant, pawn promotion
+var onSnapEnd = function() {
+  board.position(game.fen());
+};
+
+var cfg = {
+  draggable: true,
+  position: 'start',
+  onDragStart: onDragStart,
+  onDrop: onDrop,
+  onSnapEnd: onSnapEnd
+};
+board = ChessBoard('board', cfg);
+//--- end example JS ---
+
+}; // end init()
+$(document).ready(init);
+</script>
+
+</body>
+</html>
