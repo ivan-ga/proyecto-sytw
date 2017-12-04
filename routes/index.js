@@ -40,12 +40,10 @@ router.get('/r_damas', isLoggedIn, function(req, res) {
   res.render('r_damas.ejs', { user: req.user,title: "Damas" });
 });
 
-router.get('/r_tresenraya', isLoggedIn, function(req, res) {
-  res.render('r_tresenraya.ejs', { user: req.user,title: "Tres en raya" });
+router.get('/g_tresenraya', isLoggedIn, function(req, res) {
+  res.redirect('tres_en_raya/g_tresenraya.html');
 });
-router.post('/r_tresenraya', isLoggedIn, function(req, res) {
-  res.render('r_tresenraya.ejs', { user: req.user,title: "Tres en raya" });
-});
+
 
 
 

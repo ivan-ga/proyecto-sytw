@@ -1,0 +1,123 @@
+body {
+  background-color: #6795C2;
+}
+
+.nav-wrapper {
+  background-color: #083968;
+}
+
+#board {
+  width: 90vw;
+  height: 90vw;
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 600px;
+  max-height: 600px;
+  background-color: rgba(64, 116, 167,1);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.32), 0 3px 12px 0 rgba(0, 0, 0, 0.24);
+  text-align: center;
+  margin-top: 50px;
+}
+
+#score-board {
+  min-width: 300px;
+  max-width: 600px;
+  margin-top: 30px;
+}
+
+.score {
+  font-size: 1.7em;
+  color: #bbdefb;
+}
+
+.bluetext {
+  color: rgba(64, 116, 167,1);
+}
+
+.icon-color{
+  color: rgba(64, 116, 167,1);
+}
+
+.portrait {
+  width: 200%;
+  height: auto;
+}
+
+.person {
+  font-size: 1.5em;
+  color: white;
+  text-align: center;
+  width: 100%;
+  line-height: 1.5em;
+}
+
+.contact {
+  text-align: center;
+}
+
+.square {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  width: calc(100%/3);
+  height: 100%;
+  background-color: rgba(0,0,0,0.0);
+  border-style: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.who {
+    color: #bbdefb;
+    font-size: 5.5em;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+}
+
+.row.top,
+.row.middle {
+  border-bottom: dotted 2px #6795C2;
+}
+
+.square.left,
+.square.middle {
+  border-right: dotted 2px #6795C2;
+}
+
+
+#board > .row {
+  height: calc(100%/3);
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.choose {
+  text-align: center;
+  font-size: 8em;
+  cursor: pointer;
+  background-color: #eee;
+  color: #555;
+}
+
+.choose:hover {
+  background-color: rgba(0,0,0,0.0);
+  color: #000;
+}
+
+.modal .modal-content {
+    padding: 0px;
+    margin: 0px;
+}
+
+.row {
+  padding: 0px;
+  margin: 0px;
+}
+
+#mobile-menu {
+  padding: 0px;
+  margin: 0px;
+}

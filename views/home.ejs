@@ -26,60 +26,23 @@
 </head>
 <style type="text/css">
 img { width: 140px; height: 140px; border-radius: 50%!important }
-.juego{
-  
-}
-.boto{
-border-radius: 50%;}
-.boto1{
-  border-radius: 25%;
-}
+
+
   
 </style>
 <body>
 
-    <header>
-        <!--Navbar-->
-        <nav class="navbar navbar-toggleable-md navbar-dark">
-            <div class="container">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <strong>Proyecto SYTW</strong>
-                </a>
-                <div class="collapse navbar-collapse" id="navbarNav1">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Home </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/games">Juego</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ranking">Ranking</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">Perfil</a>
-                        </li>
-                             <li class="nav-item">
-                             <a class="nav-link" href="/logout">Cerrar</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline waves-effect waves-light">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
-                </div>
-            </div>
-        </nav>
-        <!--/.Navbar-->
+     <header>
+      <div ng-controller="HeaderCtrl">
+        <div ng-include src="header.url"></div>
+      </div>
     </header>
 
   <main>
     <div class="col-sm-12 ">
       <div class="text-center">
         
-        <hr>
+        
         <div class="row">
          <div class="col-sm-4 offset-1 ">
             <div class="">
@@ -90,7 +53,9 @@ border-radius: 50%;}
                 <br>
                  <form id="uploadForm" enctype="multipart/form-data" action="/home" method="post">
 		            <input type="file" name="userFile" />
-		            <input type="submit" value="Upload File" name="submit" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
+		            <br>
+		            <br>
+		            <input type="submit" value="Subir archivo" name="submit" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
 	           </form>  
                 
             </div>
@@ -147,7 +112,7 @@ border-radius: 50%;}
           <% } %>
 
           
-            <table>
+            <table class="table-responsive">
                 <tr>
                 <th>Juego</th>
                   <th>Totales</th>
@@ -197,6 +162,11 @@ border-radius: 50%;}
 
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
+  
+  <!-- Menu reducido -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   
   
   </body>
