@@ -68,26 +68,28 @@
                   <div class="container">
                       <!--Page heading-->
                       <div class="row">
-                          <div class="offset-1 col-md-11">
+                          <div class="offset-1 col-md-7">
 
-                               <h1>Ranking 3nWin</h1>
+                               <h1>Ranking Tres en Raya</h1>
                        <ul class="users">
-                              <table>
+                              <table class="table table-hover border-dark table-bordered table-stripe">
+
                                   <thead>
                                       <tr>
-                                          <th data-priority="1">Posición</th>
-                                          <th data-priority="1">Nombre</th>
-                                          <th data-priority="2">Totales</th>
-                                          <th data-priority="4">Ganadas</th>
-                                          <th data-priority="3">Perdidas</th>
-                                          <th data-priority="5">Empatadas</th>
-                                          <th data-priority="6">% Ganadas</th>
+                                          <th scope="col" data-priority="1">Posición</th>
+                                          <th scope="col" data-priority="1">Nombre</th>
+                                          <th scope="col" data-priority="2">Totales</th>
+                                          <th scope="col" data-priority="4">Ganadas</th>
+                                          <th scope="col" data-priority="3">Perdidas</th>
+                                          <th scope="col" data-priority="5">Empatadas</th>
+                                          <th scope="col" data-priority="6">% Ganadas</th>
+
                                       </tr>
                                   </thead>
                                   <tbody>
                                          <% for(var i=0; i < users.length; i++) {%>
                                           <li class="users">
-                                          <tr>
+                                          <tr class="table-info">
                                             <td data-priority="1"><%= i+1 %> </td>
                                             <td data-priority="2"><%= users[i].local.name%> </td>
                                             <td data-priority="2"><%= users[i].local.totales%> </td>
@@ -95,14 +97,32 @@
                                             <td data-priority="4"><%=  users[i].local.perdidas %></td>
                                             <td data-priority="5"><%=  users[i].local.empatadas %></td>
                                             <td data-priority="6"><%=  ((users[i].local.ganadas/users[i].local.totales)*100).toFixed(2) %>%</td>
-                                           </tr>    </li>
+                                           </tr class="table-info">    </li>
                                         <% } %>
                                         </ul>
                                   </tbody>
                               </table>
 
                           </div>
+
+
+                                                    <div class="offset-1 col-md-3 ">
+                                      <img src="/img/ranking2.jpg" class="img-fluid" alt="Responsive image">
+                                                    </div>
+
+
                       </div>
+
+
+
+
+
+
+
+
+
+
+
                   </div>
 
                   <!--/.Main layout-->
