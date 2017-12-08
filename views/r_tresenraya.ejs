@@ -25,55 +25,114 @@
 
     <header>
         <!--Navbar-->
-        <nav class="navbar navbar-toggleable-md navbar-dark">
+        <!-- <nav class="navbar navbar-toggleable-md navbar-dark">
             <div class="container">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#">
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                   <span class="navbar-toggler-icon"></span>
+              </button>
+                <a class="navbar-brand" href="/">
                     <strong>Proyecto SYTW</strong>
                 </a>
                 <div class="collapse navbar-collapse" id="navbarNav1">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/ranking">Ranking</a>
+                            <a class="nav-link" href="/games">Juegos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/rankings">Rankings</a>
+                        </li>
+
+                        <li class="nav-item">
+                             <a class="nav-link" href="/logout">Cerrar</a>
                         </li>
 
                     </ul>
-                    <form class="form-inline waves-effect waves-light">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
                 </div>
             </div>
-        </nav>
+        </nav> -->
+        <div ng-controller="HeaderCtrl">
+          <div ng-include src="header.url"></div>
+        </div>
+
         <!--/.Navbar-->
     </header>
 
     <main>
         <!--Main layout-->
-       
-         <div ng-app="prueba" ng-controller="namesCtrl">
+        <!--Main layout-->
+                  <div class="container">
+                      <!--Page heading-->
+                      <div class="row">
+                          <div class="offset-1 col-md-7">
 
-<table border="1" width="100%">
-<tr>
-<th ng-click="orderByMe('name')">Name</th>
-<th ng-click="orderByMe('country')">Country</th>
-</tr>
-<tr ng-repeat="x in names | orderBy:myOrderBy">
-<td>{{x.name}}</td>
-<td>{{x.country}}</td>
-</tr>
-</table>
+                               <h1>Ranking Tres en Raya</h1>
+                       <ul class="users">
+                              <table class="table table-hover border-dark table-bordered table-stripe">
 
-</div>
+                                  <thead>
+                                      <tr>
+                                          <th scope="col" data-priority="1">Posición</th>
+                                          <th scope="col" data-priority="1">Nombre</th>
+                                          <th scope="col" data-priority="2">Totales</th>
+                                          <th scope="col" data-priority="4">Ganadas</th>
+                                          <th scope="col" data-priority="3">Perdidas</th>
+                                          <th scope="col" data-priority="5">Empatadas</th>
+                                          <th scope="col" data-priority="6">% Ganadas</th>
+
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                         <% for(var i=0; i < users.length; i++) {%>
+                                          <li class="users">
+                                          <tr class="table-info">
+                                            <td data-priority="1"><%= i+1 %> </td>
+                                            <td data-priority="2"><%= users[i].local.name%> </td>
+                                            <td data-priority="2"><%= users[i].local.totales%> </td>
+                                            <td data-priority="3"><%= users[i].local.ganadas %></td>
+                                            <td data-priority="4"><%=  users[i].local.perdidas %></td>
+                                            <td data-priority="5"><%=  users[i].local.empatadas %></td>
+                                            <td data-priority="6"><%=  ((users[i].local.ganadas/users[i].local.totales)*100).toFixed(2) %>%</td>
+                                           </tr class="table-info">    </li>
+                                        <% } %>
+                                        </ul>
+                                  </tbody>
+                              </table>
+
+                          </div>
 
 
-                 
-        
+                                                    <div class="offset-1 col-md-3 ">
+                                      <img src="/img/ranking2.jpg" class="img-fluid" alt="Responsive image">
+                                                    </div>
+
+
+                      </div>
+
+
+
+
+
+
+
+
+
+
+
+                  </div>
+
+                  <!--/.Main layout-->
+
+
+
+
+
+
+
 
         <!--/.Main layout-->
     </main>
@@ -85,6 +144,9 @@
         <div ng-include src="footer.url"></div>
       </div>
 
+
+
+
     </footer>
     <!--/.Footer-->
 
@@ -92,7 +154,7 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
-    <script type="text/javascript" src="js/footer.js"></script>
+    <script type="text/javascript" src="js/myapp.js"></script>
 
     <!-- JQuery -->
     <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
@@ -111,7 +173,7 @@
     </script>
 
 
-<script>
+<!-- <script>
 angular.module('prueba', []).controller('namesCtrl', function($scope) {
     $scope.names = [
         {name:'Jani',country:'Norway'},
@@ -128,7 +190,7 @@ angular.module('prueba', []).controller('namesCtrl', function($scope) {
         $scope.myOrderBy = x;
     }
 });
-</script>
+</script> -->
 
 
 
@@ -138,16 +200,3 @@ angular.module('prueba', []).controller('namesCtrl', function($scope) {
 </body>
 
 </html>
-
-
-<!--html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html-->
-

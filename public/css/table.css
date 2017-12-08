@@ -25,11 +25,11 @@ h1{
 /*Table*/
 table{
   padding: 3px;
-  border: 1px solid black;
-  border-radius: 3px;
-  background-color: #eee;
-  font-size: 1em;
-  box-shadow: 0 0 15px 10px rgba(0,0,0,.3);
+  /*border: 1px solid black;*/
+  /*border-radius: 3px;*/
+  /*background-color: #eee;*/
+  /*font-size: 1em;*/
+  /*box-shadow: 0 0 15px 10px rgba(0,0,0,.3);*/
 }
 td,th{
   padding: 20px;

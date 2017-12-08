@@ -17,8 +17,12 @@ router.get('/signup', function(req, res) {
 });
 
 router.get('/home', isLoggedIn, function(req, res) {
+<<<<<<< HEAD
 //  console.log("estoy akiii")
   res.render('home.ejs', { user: req.user});
+=======
+  res.render('home.ejs', { user: req.user });
+>>>>>>> 5b36d9d950979ceb2c3f9990115399532de2767f
 });
 
 
@@ -34,9 +38,6 @@ router.get('/games', isLoggedIn, function(req, res) {
 router.get('/rankings', isLoggedIn, function(req, res) {
   res.render('rankings.ejs', { user: req.user,title: "Rankings" });
 });
-// router.post('/games', isLoggedIn, function(req, res) {
-//   res.render('games.ejs', { user: req.user,title: "Juegos" });
-// });
 
 router.get('/g_damas', isLoggedIn, function(req, res) {
   res.render('g_damas.ejs', { user: req.user,title: "Damas" });
@@ -47,6 +48,7 @@ router.get('/g_buscaminas', isLoggedIn, function(req, res) {
   res.render('g_buscaminas.ejs', { user: req.user,title: "Buscaminas" });
 });
 
+<<<<<<< HEAD
 
 router.get('/r_tresenraya', isLoggedIn, function(req, res) {
   res.render('r_tresenraya.ejs', { user: req.user,title: "Tres en raya" });
@@ -56,6 +58,18 @@ router.post('/r_tresenraya', isLoggedIn, function(req, res) {
 });
 
 
+=======
+router.get('/g_tresenraya', isLoggedIn, function(req, res) {
+  res.render('g_tresenraya.ejs', { user: req.user,title: "3 en raya" });
+});
+
+
+router.get('/g_ajedrez', isLoggedIn, function(req, res) {
+  res.render('g_ajedrez.ejs', { user: req.user,title: "Ajedrez" });
+});
+
+
+>>>>>>> 5b36d9d950979ceb2c3f9990115399532de2767f
 router.post('/registro', passport.authenticate('local-signup', {
   successRedirect: '/home',
   failureRedirect: '/',
