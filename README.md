@@ -1,7 +1,7 @@
 
 # Proyecto SyTW
 
-## 3nWin
+## Games
 
 Aplicación web para diferentes juegos de mesa.
 
