@@ -14,8 +14,11 @@ function inicializaMatriz(){
 				for(var i = 0; i < 8; i++){
 			        for(var j = 0; j < 8; j++){			           
 			           var div = document.createElement("div");
-			            div.id = i + "" + j;			            
-			            div.addEventListener("click",mostrarNumero, true);			            
+			            div.id = i + "" + j;	
+			            div.style.backgroundColor = "#9577cf";
+			           
+			            div.addEventListener("click",mostrarNumero, true);
+			            div.addEventListener("contextmenu",nuevo, true);
 			            tablerominas.appendChild(div);
 			        }
 			    }		    
@@ -32,8 +35,10 @@ function inicializaMatriz(){
 			            div.remove()
 			            var div = document.createElement("div");
 			            div.id = i + "" + j;
+			            div.style.backgroundColor = "#9577cf";
+			            div.style.backgroundImage = null;
 			            div.addEventListener("click",mostrarNumero, true);
-			             div.addEventListener("contextmenu",nuevo, true);
+			            div.addEventListener("contextmenu",nuevo, true);
 			            tablerominas.appendChild(div);
 			            
 			             
@@ -44,45 +49,38 @@ function inicializaMatriz(){
 			
 			
 			function nuevo(e){
-				
-				
-					window.oncontextmenu = function() {
-							return false;
-						}
-						
-				
-					
+			
+						window.oncontextmenu = function() {
+								return false;
+							}
+		
 				var auxstr = this.id.split("");				
 				var myid = auxstr[0] + auxstr[1];			
 				divObj = document.getElementById(myid);
 				console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-               console.log(divObj.style.backgroundColor);
-                if(	divObj.style.backgroundColor === "white"){
+                console.log(	divObj);
+                
+                 if(	divObj.style === ""){
+                 	    console.log("aaaaaaaaaaaaaaaaa")
+            			divObj.setAttribute("style.backgroundImage", "");
+                }
+				if((divObj.style.backgroundColor === "rgb(149, 119, 207)")){
+					    divObj.setAttribute("name", "bandera");
+					    divObj.setAttribute("style", "");
+                		divObj.style.backgroundImage = "url(img/juegos/buscaminas/flag.jpg)";	//Pongo bandera
+                }
+              
+              	
+                
+                
+                if((	divObj.style.backgroundColor === "red")&&(minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] == 0)){
                 	
                 		divObj.style.backgroundImage = "url(img/juegos/buscaminas/flag.jpg)";	//Pongo bandera
                 }
                 
                 //Hay qeu poner las opciones si estas en blanco no se hacer nada
-               
-				if(minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] == 0){
-					divObj.style.backgroundColor = "white";					
-					abrirAlrededor(parseInt(auxstr[0],10),parseInt(auxstr[1],10),minas);
-				
-					
-					
-				}else{
-					if(minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] != "*"){
-						document.getElementById(myid).innerHTML = "<p style='margin-top:15px;'>" + minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] + "</p>";
-						divObj.style.backgroundColor = "white";
-					
-					}else{
-						divObj.style.backgroundImage = "url(img/juegos/buscaminas/bomba.jpg)";						
-						abrirTablero(minas);
-					
-						alert("Perdiste =(");
-					}
-				}								
-						
+             					
+              
 				
 			}
 
