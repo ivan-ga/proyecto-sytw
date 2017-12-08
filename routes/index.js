@@ -11,7 +11,6 @@ router.get('/signup', function(req, res) {
 });
 
 router.get('/home', isLoggedIn, function(req, res) {
-//  console.log("estoy akiii")
   res.render('home.ejs', { user: req.user });
 });
 
@@ -28,9 +27,6 @@ router.get('/games', isLoggedIn, function(req, res) {
 router.get('/rankings', isLoggedIn, function(req, res) {
   res.render('rankings.ejs', { user: req.user,title: "Rankings" });
 });
-// router.post('/games', isLoggedIn, function(req, res) {
-//   res.render('games.ejs', { user: req.user,title: "Juegos" });
-// });
 
 router.get('/g_damas', isLoggedIn, function(req, res) {
   res.render('g_damas.ejs', { user: req.user,title: "Damas" });
@@ -41,7 +37,7 @@ router.get('/r_damas', isLoggedIn, function(req, res) {
 });
 
 router.get('/g_tresenraya', isLoggedIn, function(req, res) {
-  res.redirect('tres_en_raya/g_tresenraya.html');
+  res.render('g_tresenraya.ejs', { user: req.user,title: "3 en raya" });
 });
 
 
