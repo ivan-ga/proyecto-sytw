@@ -17,12 +17,7 @@ router.get('/signup', function(req, res) {
 });
 
 router.get('/home', isLoggedIn, function(req, res) {
-<<<<<<< HEAD
-//  console.log("estoy akiii")
   res.render('home.ejs', { user: req.user});
-=======
-  res.render('home.ejs', { user: req.user });
->>>>>>> 5b36d9d950979ceb2c3f9990115399532de2767f
 });
 
 
@@ -48,8 +43,6 @@ router.get('/g_buscaminas', isLoggedIn, function(req, res) {
   res.render('g_buscaminas.ejs', { user: req.user,title: "Buscaminas" });
 });
 
-<<<<<<< HEAD
-
 router.get('/r_tresenraya', isLoggedIn, function(req, res) {
   res.render('r_tresenraya.ejs', { user: req.user,title: "Tres en raya" });
 });
@@ -58,7 +51,6 @@ router.post('/r_tresenraya', isLoggedIn, function(req, res) {
 });
 
 
-=======
 router.get('/g_tresenraya', isLoggedIn, function(req, res) {
   res.render('g_tresenraya.ejs', { user: req.user,title: "3 en raya" });
 });
@@ -69,7 +61,6 @@ router.get('/g_ajedrez', isLoggedIn, function(req, res) {
 });
 
 
->>>>>>> 5b36d9d950979ceb2c3f9990115399532de2767f
 router.post('/registro', passport.authenticate('local-signup', {
   successRedirect: '/home',
   failureRedirect: '/',
