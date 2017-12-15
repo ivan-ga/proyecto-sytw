@@ -87,16 +87,16 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                         <% for(var i=0; i < users.length; i++) {%>
+                                         <% for (var i=0; i < user.length; i++) {%>
                                           <li class="users">
                                           <tr class="table-info">
                                             <td data-priority="1"><%= i+1 %> </td>
-                                            <td data-priority="2"><%= users[i].local.name%> </td>
-                                            <td data-priority="2"><%= users[i].local.totales%> </td>
-                                            <td data-priority="3"><%= users[i].local.ganadas %></td>
-                                            <td data-priority="4"><%=  users[i].local.perdidas %></td>
-                                            <td data-priority="5"><%=  users[i].local.empatadas %></td>
-                                            <td data-priority="6"><%=  ((users[i].local.ganadas/users[i].local.totales)*100).toFixed(2) %>%</td>
+                                            <td data-priority="2"><%= user[i].local.username %> </td>
+                                            <td data-priority="2"><%= user[i].local.totales_3enraya %> </td>
+                                            <td data-priority="3"><%= user[i].local.ganadas_3enraya %></td>
+                                            <td data-priority="4"><%= user[i].local.perdidas_3enraya %></td>
+                                            <td data-priority="5"><%= user[i].local.empatadas_3enraya %></td>
+                                            <td data-priority="6"><%= ((user[i].local.ganadas_3enraya/user[i].local.totales_3enraya)*100).toFixed(2) %>%</td>
                                            </tr class="table-info">    </li>
                                         <% } %>
                                         </ul>
