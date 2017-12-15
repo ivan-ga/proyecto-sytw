@@ -126,20 +126,20 @@ function full(state) {
 }
 /*Enviar acutilizar la tabla de base de datos*/
 function enviadatos_gan(){
-		window.location = "/m?ganadas="+ GANAX;
+		window.location = "/m?ganadas_3enraya="+ GANAX;
 		console.log("messageeeeeee");
 		return true;
 
 
 }
 function enviadatos_per(){
-		window.location = "/m?perdidas="+ GANAO;
+		window.location = "/m?perdidas_3enraya="+ GANAO;
 		console.log("messageeeeeee");
 		return true;
 
 }
 function enviadatos_empat(){
-		window.location = "/m?empatadas="+ EMPAT;
+		window.location = "/m?empatadas_3enraya="+ EMPAT;
 		console.log("messageeeeeee");
 		return true;
 
