@@ -46,6 +46,10 @@ router.get('/g_ajedrez', isLoggedIn, function(req, res) {
   res.render('g_ajedrez.ejs', { user: req.user,title: "Ajedrez" });
 });
 
+router.get('/g_buscaminas', isLoggedIn, function(req, res) {
+  res.render('g_buscaminas.ejs', { user: req.user,title: "Buscaminas" });
+});
+
 
 router.post('/registro', passport.authenticate('local-signup', {
   successRedirect: '/home',

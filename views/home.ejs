@@ -28,7 +28,7 @@
 img { width: 140px; height: 140px; border-radius: 50%!important }
 
 
-  
+
 </style>
 <body>
 
@@ -41,8 +41,8 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
   <main>
     <div class="col-sm-12 ">
       <div class="text-center">
-        
-        
+
+
         <div class="row">
          <div class="col-sm-4 offset-1 ">
             <div class="">
@@ -56,13 +56,13 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
 		            <br>
 		            <br>
 		            <input type="submit" value="Subir archivo" name="submit" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
-	           </form>  
-                
+	           </form>
+
             </div>
         </div>
-            
+
     <div class="col-sm-6 ">
-        
+
 
           <% } %>
 
@@ -70,27 +70,27 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
             <h2 class="fa fa-facebook"> Facebook</h2><br>
             <img src="http://graph.facebook.com/<%= user.local.id %>/picture?type=large" class="img-circle"><br>
             <strong>Name</strong>: <%= user.local.username_facebook %><br><br>
-             
+
           <% } %>
 
           <% if (user.local.username_twitter != null) { %>
             <h2 class="fa fa-twitter"> Twitter</h2><br>
             <img src="https://twitter.com/<%= user.local.username_twitter %>/profile_image?size=original" class="img-circle"><br>
             <strong>Name</strong>: <%= user.local.username_twitter %><br><br><br>
-             
+
           <% } %>
           <% if (user.local.username_github != null) { %>
             <h2 class="fa fa-github"> Github</h2><br>
             <img src="https://avatars2.githubusercontent.com/u/<%= user.local.id %>" class="img-circle"><br>
             <strong>Name</strong>: <%= user.local.username_github %><br>
-            
-            
-            
+
+
+
           <% } %>
 
-       
 
-    
+
+
 
           <% if (!user) { %>
 
@@ -105,13 +105,13 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
           <% } else { %>
 
 
-            
-                           
+
+
 
 
           <% } %>
 
-          
+
             <table class="table-responsive">
                 <tr>
                 <th>Juego</th>
@@ -127,6 +127,27 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
                      <td><%= user.local.perdidas_3enraya %></td>
                      <td><%= user.local.empatadas_3enraya %></td>
                 </tr>
+                <tr>
+                    <td>Ajedrez</td>
+                     <td><%= user.local.totales_ajedrez%> </td>
+                     <td><%= user.local.ganadas_ajedrez %></td>
+                     <td><%= user.local.perdidas_ajedrez %></td>
+                     <td><%= user.local.empatadas_ajedrez %></td>
+                </tr>
+                <tr>
+                    <td>Buscaminas</td>
+                     <td><%= user.local.totales_buscaminas%> </td>
+                     <td><%= user.local.ganadas_buscaminas %></td>
+                     <td><%= user.local.perdidas_buscaminas %></td>
+                     <td><%= user.local.empatadas_buscaminas %></td>
+                </tr>
+                <tr>
+                    <td>Damas</td>
+                     <td><%= user.local.totales_damas%> </td>
+                     <td><%= user.local.ganadas_damas %></td>
+                     <td><%= user.local.perdidas_damas %></td>
+                     <td><%= user.local.empatadas_damas %></td>
+                </tr>
 
               </table>
         </div>
@@ -134,7 +155,7 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
   </div>
   </div>
   </main>
-  
+
 <!--Footer-->
   <footer class="page-footer center-on-small-only">
 
@@ -162,12 +183,12 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
 
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
-  
+
   <!-- Menu reducido -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-  
-  
+
+
   </body>
 </html>
