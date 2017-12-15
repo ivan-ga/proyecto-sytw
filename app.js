@@ -58,21 +58,21 @@ app.get('/m', (request, response) => {
         if(err)  console.error("Error:"+err);
         else
         {
-              if( request.query.ganadas != undefined){
+              if( request.query.ganadas_3enraya != undefined){
 
                     for (var i = data.length - 1; i >= 0; i--) {
                           if( data[i].id === request.session.passport.user ){
-                          User.update({"_id": data[i]._id}, {$inc: {"local.ganadas":1,"local.totales":1}},function(error,dato){
+                          User.update({"_id": data[i]._id}, {$inc: {"local.ganadas_3enraya":1,"local.totales_3enraya":1}},function(error,dato){
                           });
                     }
               }
 
               }
-              if( request.query.perdidas  != undefined){
+              if( request.query.perdidas_3enraya  != undefined){
 
                     for (var i = data.length - 1; i >= 0; i--) {
-                        if(data[i].id=== request.session.passport.user){
-                          User.update({"_id": data[i]._id}, {$inc: {"local.perdidas":1,"local.totales":1}},function(error,dato){
+                        if(data[i].id === request.session.passport.user){
+                          User.update({"_id": data[i]._id}, {$inc: {"local.perdidas_3enraya":1,"local.totales_3enraya":1}},function(error,dato){
 
                           });
 
@@ -80,12 +80,12 @@ app.get('/m', (request, response) => {
                      }
 
               }
-              if( request.query.empatadas  != undefined){
+              if( request.query.empatadas_3enraya  != undefined){
 
                     for (var i = data.length - 1; i >= 0; i--) {
-                        if(data[i].id===request.session.passport.user){
+                        if(data[i].id === request.session.passport.user){
 
-                          User.update({"_id": data[i]._id}, {$inc: {"local.empatadas":1,"local.totales":1}},function(error,dato){
+                          User.update({"_id": data[i]._id}, {$inc: {"local.empatadas_3enraya":1,"local.totales_3enraya":1}},function(error,dato){
 
                           });
 
@@ -102,7 +102,7 @@ app.get('/m', (request, response) => {
 
 app.get('/ranking', (req, res) => {
 
- User.find().sort('-local.ganadas').find( function(err,data)
+ User.find().sort('-local.ganadas_3enraya').find( function(err,data)
   {
       if(err)  console.error("Error:"+err);
 
