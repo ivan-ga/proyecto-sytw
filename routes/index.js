@@ -3,7 +3,14 @@ var path = require('path');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var multer = require('multer');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var flash = require('express-flash');
+
+
 var router = express.Router();
+
+router.use(flash());
 
 //Importando esquemas de BD
 const Estructura = require('../models/user.js');
@@ -20,7 +27,7 @@ router.get('/signup', function(req, res) {
 });
 
 router.get('/home', isLoggedIn, function(req, res) {
-  res.render('home.ejs', { user: req.user });
+  res.render('home.ejs', { user: req.user, expressFlash: '' }); 
 });
 
 
@@ -174,6 +181,8 @@ router.get('/m', isLoggedIn, (request, response) => {
 
 //////////////////////SUBIR IMAGEN PARA PERFIL DE USUARIO
 
+
+
 var storage = multer.diskStorage({
 	destination: function(req, file, callback) {
 		callback(null, './public/img/uploads')
@@ -183,24 +192,29 @@ var storage = multer.diskStorage({
 
 	}
 })
-
+ 
 router.post('/home', isLoggedIn, function(req, res) {
-  console.log("POST UPLOAD");
+ 
 	var upload = multer({
 		storage: storage,
-		fileFilter: function(req, file, callback) {
-			var ext = path.extname(file.originalname)
-			if (ext !== '.jpg') {
-				return callback(res.end('Only jpg images are allowed'), null)
+		fileFilter: function (req, file, callback) {
+			var ext = path.extname(file.originalname);
+			if (ext != '.jpg') {
+				req.fileValidationError = true;
+				return callback(new Error('formato incorrecto')); //Para que no suba y almacene la imagen si no es jpg
 			}
-			callback(null, true)
+			callback(null, true);
 		}
 	}).single('userFile');
 	upload(req, res, function(err) {
-
+    if(req.fileValidationError) { //Error con el formato de la imagen
+      res.render('home.ejs', { user: req.user, expressFlash: 'ERROR: solo imágenes JPG!' }); 
+    }
+    else{
+      res.redirect('back'); //Refresca la página después de cambiar la foto de perfil
+    }
 	})
-
-	res.redirect('back'); //refresca la página después de cambiar la foto de perfil
+	
 })
 
 //////////////////////TERMINADO SUBIR IMAGEN

@@ -51,11 +51,14 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
                 <strong>Name</strong>: <%= user.local.username %><br><br><br>
                 <strong>Cambiar imagen de perfil:</strong>
                 <br>
+                <% if ( expressFlash.length > 0 ) { %>
+                    <p><strong><%= expressFlash %></strong></p>
+                <% } %>
                  <form id="uploadForm" enctype="multipart/form-data" action="/home" method="post">
 		            <input type="file" name="userFile" />
 		            <br>
 		            <br>
-		            <input type="submit" value="Subir archivo" name="submit" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
+		            <input type="submit" value="Subir archivo" name="submit" onsubmit="setTimeout(function () { window.location.reload(); }, 10)"> 
 	           </form>
 
             </div>
