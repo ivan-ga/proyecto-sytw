@@ -27,7 +27,7 @@ router.get('/signup', function(req, res) {
 });
 
 router.get('/home', isLoggedIn, function(req, res) {
-  res.render('home.ejs', { user: req.user, expressFlash: '' }); 
+  res.render('home.ejs', { user: req.user, expressFlash: '' });
 });
 
 
@@ -49,9 +49,9 @@ router.get('/g_damas', isLoggedIn, function(req, res) {
   res.render('g_damas.ejs', { user: req.user,title: "Damas" });
 });
 
-router.get('/r_damas', isLoggedIn, function(req, res) {
-  res.render('r_damas.ejs', { user: req.user,title: "Damas" });
-});
+// router.get('/r_damas', isLoggedIn, function(req, res) {
+//   res.render('r_damas.ejs', { user: req.user,title: "Damas" });
+// });
 
 router.get('/g_tresenraya', isLoggedIn, function(req, res) {
   res.render('g_tresenraya.ejs', { user: req.user,title: "3 en raya" });
@@ -192,9 +192,9 @@ var storage = multer.diskStorage({
 
 	}
 })
- 
+
 router.post('/home', isLoggedIn, function(req, res) {
- 
+
 	var upload = multer({
 		storage: storage,
 		fileFilter: function (req, file, callback) {
@@ -208,13 +208,13 @@ router.post('/home', isLoggedIn, function(req, res) {
 	}).single('userFile');
 	upload(req, res, function(err) {
     if(req.fileValidationError) { //Error con el formato de la imagen
-      res.render('home.ejs', { user: req.user, expressFlash: 'ERROR: solo imágenes JPG!' }); 
+      res.render('home.ejs', { user: req.user, expressFlash: 'ERROR: solo imágenes JPG!' });
     }
     else{
       res.redirect('back'); //Refresca la página después de cambiar la foto de perfil
     }
 	})
-	
+
 })
 
 //////////////////////TERMINADO SUBIR IMAGEN

@@ -24,7 +24,8 @@
     "passport-google-oauth": "^0.2.0",
     "passport-local": "~1.0.0",
     "passport-twitter": "^1.0.3",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "express-flash": "0.0.2"
   },
   "repository": {
     "type": "git",
@@ -35,5 +36,8 @@
   "bugs": {
     "url": "https://github.com/ULL-ESIT-DSI-1617/proyecto-dsi-lucas-ivan-miguel-jairo.git/issues"
   },
-  "homepage": "https://github.com/ULL-ESIT-DSI-1617/proyecto-dsi-lucas-ivan-miguel-jairo.git#readme"
+  "homepage": "https://github.com/ULL-ESIT-DSI-1617/proyecto-dsi-lucas-ivan-miguel-jairo.git#readme",
+  "devDependencies": {
+    "express-flash": "0.0.2"
+  }
 }
