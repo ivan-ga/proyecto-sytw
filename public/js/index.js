@@ -1,12 +1,17 @@
 
-/* Hey! We have Javascript installed! 
-Let's us it! */
-$('.drawer').hide();
-$('.more').show();
 
-/* Open and Close the drawer */
-$('.drawer').prev('tr').on('click', function(){
-  var tr = $(this);
-  tr.toggleClass('shadow');
-  tr.next('.drawer').toggle();
-});
+
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords No son iguales");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+  

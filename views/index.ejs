@@ -73,7 +73,7 @@
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                             <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                         </ol>
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active">
@@ -100,7 +100,7 @@
                     </div>
 
 
-                    <div class="col-md-8 ng-scope ng-building" ng-controller="controladorConMetodos">
+                    <div class="col-md-8 ng-scope ng-building" ng-controller="controladorConMetodos as fo">
                         <div class="omb_login">
                             <div>
                                 <div>
@@ -150,13 +150,13 @@
                                        <form class="omb_loginForm" method="POST" action="/login">
                                                 <div class="input-group">
                                                     	<span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                    <input required type="text" ng-model="vm.fdatos.username" class="form-control" name="username" placeholder="Nombre Usuario">
+                                                    <input required type="text" ng-model="fo.login.username" class="form-control" name="username" placeholder="Nombre Usuario">
                                                 </div>
                                                  <span class="help-block"></span>
 
                                                 <div class="input-group">
                                                     	<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                    <input required type="password" class="form-control" ng-model="vm.fdatos.password" name="password" placeholder="Password">
+                                                    <input required type="password" class="form-control" ng-model="fo.login.password" name="password" placeholder="Password">
                                                 </div>
                                                 <div>
                                                      <a type="text" class="link" href="" ng-click="ShowForm()">Ya tienes cuenta? Regístrate aquí</a>
@@ -193,22 +193,22 @@
                                     </div>
                                     
                                     <div class="row omb_row-sm-offset-3">
-                                        <div class="col-xs-12 col-sm-9" ng-controller="registroCtrl as rg" >
-                                            <form class="omb_loginForm"  ng-submit="rg.registrar()">
+                                        <div class="col-xs-12 col-sm-9" >
+                                            <form class="omb_loginForm pure-form" method="POST" action="/registro">
                                                 <div class="input-group">
                                                     	<span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                                                    <input type="text" class="form-control" ng-model="rg.registro.username" name="username" id="username" placeholder="Introduce tu nombre de usuario">
+                                                    <input type="text" class="form-control" ng-model="fo.registro.username" name="username" id="username" placeholder="Introduce tu nombre de usuario" required>
                                                 </div>
 
                                                 	<span class="help-block"></span>
                                                 <div class="input-group">
                                                     	<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                    <input type="password" class="form-control" ng-model="rg.registro.password" name="password" placeholder="Password" id="password">
+                                                    <input type="password" class="form-control" ng-model="fo.registro.password" name="password" placeholder="Password" id="password" required>
                                                 </div>
                                                 <div class="input-group">
                                                     	<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-              <input type="password" class="form-control" ng-model="rg.registro.passwordh" name="passwordh" placeholder="Repite tu password" id="Password2">
+              <input type="password" class="form-control" ng-model="fo.registro.passwordh" name="passwordh" placeholder="Repite tu password"  id="confirm_password" required>
                                                 </div>
 
 
@@ -216,7 +216,7 @@
                                                  <a class="link" href="" ng-click="ShowRetroceder()">Ya tienes cuenta? Ir a login</a>
 
 
-                                                <button class="btn btn-lg btn-primary btn-block" value="Log in" type="submit">Registrarse</button>
+                                                <button class="btn btn-lg btn-primary btn-block pure-button pure-button-primary" value="Log in" type="submit">Registrarse</button>
                                                 <!--<button class="btn btn-lg btn-primary btn-block" type="submit"><a class="link" href="/registro">Sign Up </a></button>-->
                                                 <!--a class="link" href="/">Tienes cuenta? Pincha aquí</a-->
                                             </form>
@@ -225,14 +225,6 @@
 
                                             <div>
 
-
-
-
-
-
-
-                                                
-<a class="link" href="/cambiarpass">Cambiar contraseña hacerlos?</a>
                                             </div>
 
                                         </div>
@@ -244,10 +236,6 @@
 
                                     </div>
 
-
-                                    <!--p ng-controller="dentro">Nombre: {{registro.username}} Contraseña:{{registro.password}} ContraseOtra:{{registro.passwordh}}</p>
-
-                                    <!--./Login-->
 
 
 
@@ -293,8 +281,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
        <!--script type="text/javascript" src="js/footer.js"></script-->
         <script type="text/javascript" src="js/indexControllers.js"></script>
-
-
+        <script type="text/javascript" src="js/index.js"></script>
+ 
         <!-- JQuery ->
         <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script-->
 

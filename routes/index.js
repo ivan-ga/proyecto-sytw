@@ -22,8 +22,16 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/signup', function(req, res) {
-  res.render('signup.ejs', { message: req.flash('signupMessage') });
+router.get('/registro_error', function(req, res, next) {
+
+     var error = { status: 405, stack : "" };
+     res.render('error.ejs',{message:  'Error al registrar el usuario, usuario ya existe' ,  error })
+});
+
+router.get('/login_error', function(req, res, next) {
+
+     var error = { status: 406, stack : "" };
+     res.render('error.ejs',{message:  'Error al loguearse, usuario o contraseña erronera' ,  error })
 });
 
 router.get('/home', isLoggedIn, function(req, res) {
@@ -32,8 +40,8 @@ router.get('/home', isLoggedIn, function(req, res) {
 
 
 router.get('/logout', function(req, res) {
-  req.logout();
-  res.redirect('/');
+ req.logout();
+ res.redirect("/");
 });
 
 router.get('/games', isLoggedIn, function(req, res) {
@@ -100,13 +108,13 @@ router.get('/r_damas', isLoggedIn, function(req, res) {
 
 router.post('/registro', passport.authenticate('local-signup', {
   successRedirect: '/home',
-  failureRedirect: '/',
+  failureRedirect: '/registro_error',
   failureFlash: true,
 }));
 
 router.post('/login', passport.authenticate('local-login', {
   successRedirect: '/home',
-  failureRedirect: '/',
+  failureRedirect: '/login_error',
   failureFlash: true,
 }));
 
@@ -114,21 +122,21 @@ router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' 
 
 router.get('/auth/facebook/callback', passport.authenticate('facebook', {
   successRedirect: '/home',
-  failureRedirect: '/',
+  failureRedirect: '/login_error',
 }));
 
 router.get('/auth/twitter', passport.authenticate('twitter'));
 
 router.get('/auth/twitter/callback', passport.authenticate('twitter', {
   successRedirect: '/home',
-  failureRedirect: '/',
+  failureRedirect: '/login_error',
 }));
 
 router.get('/login/github', passport.authenticate('github', { scope: ['profile', 'email'] }));
 
 router.get('/login/github/return', passport.authenticate('github', {
   successRedirect: '/home',
-  failureRedirect: '/',
+  failureRedirect: '/login_error',
 }));
 
 // ### ACTUALIZAR ESTADÍSTICAS ###
@@ -230,19 +238,7 @@ router.get('/m', isLoggedIn, (request, response) => {
               }
 
               }
-               
-                
-        
-
             
-              
-              
-              
-              
-              
-              
-              
-              
         }
     });
 

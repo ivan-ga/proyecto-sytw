@@ -8,43 +8,40 @@ myApp.controller("PieCtrl", function($scope) {
 
 myApp.controller("controladorConMetodos", function($scope){
 
-          $scope.form=false;
-        // $scope.ocultocss='display: initial;';
-        // $scope.form=true;
-
-
-
-
+           $scope.form=false;
+           var fo = this;
+           //inicializo un objeto en los datos de formulario
+           //Primero aki dentro despues html coge lso dao y lo pasa.
+           fo.registro = {};
+           fo.login = {};
+           console.log(fo.registro);
            $scope.ShowForm=function(){
-                   $scope.estilos={display:"block"};
+                  fo.login.username = "";
+                  fo.login.password = "";
+                  $scope.estilos={display:"block"};
                   $scope.form=true;
            }
 
-            $scope.ShowRetroceder=function(){
-                 $scope.form=false;
-
+           $scope.ShowRetroceder=function(){
+                
+                  fo.registro.username = "";
+                  fo.registro.password = "";
+                  fo.registro.passwordh = "";
+                  $scope.form=false;
             }
-        });
-
- myApp.controller('MainCtrl', function ($scope) {
-  $scope.usuario = {username: $scope.usuario.username ,
-                     password: $scope.usuario.password,}
-
-
-  $scope.submitForm = function (usuario) {
-
-    alert('Form submitted with' + JSON.stringify( usuario));
-  }
-});
-
-myApp.controller("dentro", function($scope){
+            
+            fo.comprobar= function(){
+                
+                if(fo.registro.password === fo.registro.passwordh){
+                   return true; 
+                }else return false;
+            }
+           });
 
 
-        /*aki funcion sumirt*/
 
-        //Poner esto$scope.chuchu.mierda= $scope.hola;
-});
-
+  
+  
 myApp.controller('loginCtrl', ['$http',controladorPrincipal ]);
 
 function controladorPrincipal($http, $scope){
@@ -60,17 +57,12 @@ function controladorPrincipal($http, $scope){
         vm.enviar = function(){
                 // $http.post("/login", mensaje)
                  $http.post("/login",  vm.fdatos).then(function(res){
-
-
                                vm.fdatos.username="";
-                                           vm.fdatos.password="";
-
- home.datos = res.data;
- console.log(home.datos);
-                                        //vm.url("www.google.com/home");
-              //por supuesto podrás volcar la respuesta al modelo con algo como vm.res = res;
-                    },function (res) {
-                         console.log(res.data);
+                               vm.fdatos.password=""; 
+                               home.datos = res.data;
+                                console.log("eroro" + res.data);
+                      },function (res) {
+                       //  console.log("eroro" + res.data);
                      });
         }
 }
