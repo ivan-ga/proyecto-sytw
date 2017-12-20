@@ -1,114 +1,189 @@
 
 
-var minas = inicializaMatriz();
+
+var minas = inicializaMatriz();	
+var ganas = null;
 
 function inicializaMatriz(){
 				var tabla = [];
-				for(var i = 0; i < 8; i++){
-			        tabla[i] = [0,0,0,0,0,0,0,0];
+				for(var i = 0; i < 8; i++){			        
+			        tabla[i] = [0,0,0,0,0,0,0,0];			        
 			    }
 			    return tabla;
-			}
+			}		
 
 			function crearTablero(){
 				for(var i = 0; i < 8; i++){
-			        for(var j = 0; j < 8; j++){
+			        for(var j = 0; j < 8; j++){			           
 			           var div = document.createElement("div");
-			            div.id = i + "" + j;
+			            div.id = i + "" + j;	
 			            div.style.backgroundColor = "#9577cf";
-
-			            div.addEventListener("click",mostrarNumero, true);
-			            div.addEventListener("contextmenu",nuevo, true);
+			            div.style.backgroundImage = null;
+			            div.name = "agua";
+			          
+			            div.addEventListener("click", botonIzq, true);
+			            div.addEventListener("contextmenu",botonDer, true);
 			            tablerominas.appendChild(div);
 			        }
-			    }
-
+			    }		    
+			    
 			}
-
+					
 			function resetTablero(){
-
+				ganas = null;
+				minas ={}
+				minas=inicializaMatriz();	
+	            generarBombas(minas);
+		       	bombasAlrededor(minas);
 				for(var i = 0; i < 8; i++){
-			        for(var j = 0; j < 8; j++){
+			        for(var j = 0; j < 8; j++){			           
 			            //var div = document.createElement("div");
 			            var dato = i.toString() + j.toString()
 			            var div = document.getElementById( dato) ;
 			            div.remove()
 			            var div = document.createElement("div");
 			            div.id = i + "" + j;
+			            div.name = "agua";
 			            div.style.backgroundColor = "#9577cf";
 			            div.style.backgroundImage = null;
-			            div.addEventListener("click",mostrarNumero, true);
-			            div.addEventListener("contextmenu",nuevo, true);
+			           
+			            div.addEventListener("click", botonIzq, true);
+			            div.addEventListener("contextmenu",botonDer, true);
 			            tablerominas.appendChild(div);
-
-
+			            
+			             
 			        }
 			    }
-
+			   
+			    
 			}
-
-
-			function nuevo(e){
-
-						window.oncontextmenu = function() {
-								return false;
-							}
-
-				var auxstr = this.id.split("");
-				var myid = auxstr[0] + auxstr[1];
-				divObj = document.getElementById(myid);
-				console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-                console.log(	divObj);
-
-                 if(	divObj.style === ""){
-                 	    console.log("aaaaaaaaaaaaaaaaa")
-            			divObj.setAttribute("style.backgroundImage", "");
-                }
-				if((divObj.style.backgroundColor === "rgb(149, 119, 207)")){
-					    divObj.setAttribute("name", "bandera");
-					    divObj.setAttribute("style", "");
-                		divObj.style.backgroundImage = "url(img/juegos/buscaminas/flag.jpg)";	//Pongo bandera
-                }
-
-
-
-
-                if((	divObj.style.backgroundColor === "red")&&(minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] == 0)){
-
-                		divObj.style.backgroundImage = "url(img/juegos/buscaminas/flag.jpg)";	//Pongo bandera
-                }
-
-                //Hay qeu poner las opciones si estas en blanco no se hacer nada
-
-
-
+			
+			function isTerminar(){
+					if((isNoHayAgua())&&isTodasBanderas()){
+						alert("YOU WIN");
+			            enviadatos_gan();
+						ganas = true;
+					}	
+				
+				
 			}
-
-			function mostrarNumero(e){
-
-
-				var auxstr = this.id.split("");
-				var myid = auxstr[0] + auxstr[1];
-				divObj = document.getElementById(myid);
-
-				if(minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] == 0){
-					divObj.style.backgroundColor = "white";
-					abrirAlrededor(parseInt(auxstr[0],10),parseInt(auxstr[1],10),minas);
+			
+			function isTodasBanderas(){
+			    var cont=0;
+				for(var i = 0; i < 8; i++){
+			        for(var j = 0; j < 8; j++){			           
+			            //var div = document.createElement("div");
+			            var dato = i.toString() + j.toString()
+			            var div = document.getElementById( dato) ;
+			        	if(div.name === "bandera"){
+			        	     cont++;	
+			        	}
+			             
+			        }
+			    }		    
+				if(cont === 8){
+					return true; 
 				}else{
-					if(minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] != "*"){
-						document.getElementById(myid).innerHTML = "<p style='margin-top:15px;'>" + minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] + "</p>";
-						divObj.style.backgroundColor = "white";
-					}else{
-						divObj.style.backgroundImage = "url(img/juegos/buscaminas/bomba.jpg)";
-						abrirTablero(minas);
-						alert("Perdiste =(");
-					}
+					return false;
+				}
+				
+				
+				
+			}
+			
+			
+			function isNoHayAgua(){
+				var cont=0;
+				for(var i = 0; i < 8; i++){
+			        for(var j = 0; j < 8; j++){			           
+			            //var div = document.createElement("div");
+			            var dato = i.toString() + j.toString()
+			            var div = document.getElementById( dato) ;
+			        	if(div.name === "agua"){
+			        	     cont++;	
+			        	}
+			             
+			        }
+			    }		    
+				if(cont > 0){
+					return false; 
+				}else{
+					return true;
 				}
 			}
+	
+			
+		    function botonDer(e){
+			
+			   window.oncontextmenu = function() {
+								return false;
+			   }
+			 
+			  if(ganas === null){
+					var auxstr = this.id.split("");				
+					var myid = auxstr[0] + auxstr[1];			
+					divObj = document.getElementById(myid);
+	                // console.log("Contenido del div:  "	)
+	                // console.log( divObj);
+	   
+	                if(divObj.name === "agua"){
+	                	divObj.name = "bandera"
+						divObj.style.backgroundImage = "url(img/juegos/buscaminas/flag.jpg)";
+						
+	                }else{
+	                	 if(divObj.name === "bandera"){
+		                     divObj.name = "agua"
+							 divObj.style.backgroundImage = "";
+	                	 }
+	                }
+	                isTerminar();
+			  }else{
+			  	      	alert("Presionar Empezar para comenzar el juego");
+			  	
+			  }
+			    	
+		    }
+
+			function botonIzq(e){
+
+			   var auxstr = this.id.split("");				
+			   var myid = auxstr[0] + auxstr[1];			
+			   divObj = document.getElementById(myid);
+              
+               if((ganas === null)){
+	               	 if(divObj.name!=="bandera" ){
+						if(minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] == 0){
+							divObj.style.backgroundColor = "white";	
+						    divObj.name = "nada";
+							abrirAlrededor(parseInt(auxstr[0],10),parseInt(auxstr[1],10),minas);
+						}else{
+							if(minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] != "*"){
+								document.getElementById(myid).innerHTML = "<p style='margin-top:15px;'>" + minas[parseInt(auxstr[0],10)][parseInt(auxstr[1],10)] + "</p>";
+								divObj.style.backgroundColor = "white";
+								divObj.name = "nada";
+							}else{
+								divObj.style.backgroundImage = "url(img/juegos/buscaminas/bomba.jpg)";	
+								divObj.name = "bomba";
+								abrirTablero(minas);
+								ganas = false;      //si se pierde varialb se poner a fase.
+								enviadatos_per();
+								alert("Perdiste =(");
+							}
+						}
+	               	 }
+	               	 isTerminar();
+                }else{
+			  	      	alert("Presionar Empezar para comenzar el juego");
+			  	
+			    }
+			   
+			    
+               
+			}				
 
 			function bombasAlrededor(tablero){
 				for(var i = 0; i < 8; i++){
-			        for(var j = 0; j < 8; j++){
+			        for(var j = 0; j < 8; j++){			           
 			           if(tablero[i][j] == "*"){
 			           		if(i == 0 && j == 0){
 			           			colocaNumeroBombas(i, j, i + 1, j + 1,tablero);
@@ -143,9 +218,9 @@ function inicializaMatriz(){
 
 			function colocaNumeroBombas(vari,varj,fini,finj,tablero){
 				for(var i = vari; i <= fini; i++){
-			        for(var j = varj; j <= finj; j++){
+			        for(var j = varj; j <= finj; j++){			           
 			           if(tablero[i][j] != "*"){
-			           		tablero[i][j] = (parseInt(tablero[i][j])+1);
+			           		tablero[i][j] = (parseInt(tablero[i][j])+1);		           		
 			           }
 			        }
 			    }
@@ -163,33 +238,36 @@ function inicializaMatriz(){
 						fil = Math.floor((Math.random()*7)+0);
 						col = Math.floor((Math.random()*7)+0);
 					}
-					tablero[fil][col] = "*";
+					tablero[fil][col] = "*";			
 				}
 			}
 
 			function abrirCeros(vari,varj,fini,finj,cori,corj,tablero){
 				for(var i = vari; i <= fini; i++){
-			        for(var j = varj; j <= finj; j++){
+			        for(var j = varj; j <= finj; j++){		
 			        	var myid = i+""+j;
-			        	var objDiv =  document.getElementById(myid)
-			           if(objDiv.textContent == ""){
-			           		if(tablero[i][j] == 0){
-			           			if(i == cori && j == corj){
-			           				objDiv.textContent = ""	;
-			           				objDiv.style.backgroundColor = "white";
+			        	var objDiv =  document.getElementById(myid)	           
+			           if(objDiv.textContent == ""){			           		
+			           		if(tablero[i][j] == 0){			           			
+			           			if(i == cori && j == corj){			           				
+			           				objDiv.textContent = ""	; 
+			           				objDiv.style.backgroundColor = "white";	 
+			           				objDiv.name = "nada";
 			           			}else{
 			           				if(objDiv.style.backgroundColor != "white"){
 			           					abrirAlrededor(i, j,tablero);
-			           				}
+			           					objDiv.name = "nada";
+			           				}			           				
 			           			}
 
 			           		}else{
 			           			if(tablero[i][j] != "*"){
-			           				document.getElementById(myid).innerHTML = "<p style='margin-top:15px;'>" + tablero[i][j] + "</p>";
-			           				objDiv.style.backgroundColor = "white";
+			           				document.getElementById(myid).innerHTML = "<p style='margin-top:15px;'>" + tablero[i][j] + "</p>"; 
+			           				objDiv.style.backgroundColor = "white";	
+			           			    objDiv.name = "nada";
 			           			}
-			           		}
-			           }
+			           		}			           			           		
+			           }			           
 			        }
 			    }
 			}
@@ -221,23 +299,35 @@ function inicializaMatriz(){
 				}else{
 					abrirCeros(xi - 1, xj - 1, xi + 1, xj + 1, xi, xj,tablero);
 				}
-			}
+			} 
 
 			function abrirTablero(tablero){
 				for(var i = 0; i < 8; i++){
-			        for(var j = 0; j < 8; j++){
+			        for(var j = 0; j < 8; j++){	
 			        	var myid = i+""+j;
-			        	var objDiv =  document.getElementById(myid);
-			           if(tablero[i][j] == "*"){
-			           		objDiv.style.backgroundImage =  "url(img/juegos/buscaminas/bomba.jpg)";
+			        	var objDiv =  document.getElementById(myid);		           
+			           if(tablero[i][j] == "*"){			        		
+			           		objDiv.style.backgroundImage =  "url(img/juegos/buscaminas/bomba.jpg)";	
+			           		objDiv.name = "bomba";
 			           }
 			        }
 			    }
 			}
-
+			
 function cargarTablero(){
 			crearTablero();
 			generarBombas(minas);
 			bombasAlrededor(minas);
-
+				
 		}
+/*Enviar acutilizar la tabla de base de datos*/
+function enviadatos_gan(){
+	    
+		window.location = "/m?ganadas_3enraya=1";
+		return true;
+}
+function enviadatos_per(){
+		window.location = "/m?perdidas_buscaminas=1";
+		return true;
+
+}

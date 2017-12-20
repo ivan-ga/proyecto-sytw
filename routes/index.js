@@ -208,10 +208,47 @@ router.get('/m', isLoggedIn, (request, response) => {
 
               }
               
+              ///Actualizar Buscaminas
+              if( request.query.ganadas_buscaminas != undefined){
+
+                    for (var i = data.length - 1; i >= 0; i--) {
+                          if( data[i].id === request.session.passport.user ){
+                          User.update({"_id": data[i]._id}, {$inc: {"local.ganadas_buscaminas":1,"local.totales_buscaminas":1}},function(error,dato){
+                          });
+                    }
+              }
+
+              }
+              
+              if( request.query.perdidas_buscaminas != undefined){
+
+                    for (var i = data.length - 1; i >= 0; i--) {
+                          if( data[i].id === request.session.passport.user ){
+                          User.update({"_id": data[i]._id}, {$inc: {"local.perdidas_buscaminas":1,"local.totales_buscaminas":1}},function(error,dato){
+                          });
+                    }
+              }
+
+              }
+               
+                
+        
+
+            
+              
+              
+              
+              
+              
+              
+              
+              
         }
     });
 
 });
+
+
 
 //////////////////////SUBIR IMAGEN PARA PERFIL DE USUARIO
 
