@@ -174,6 +174,40 @@ router.get('/m', isLoggedIn, (request, response) => {
                      }
 
               }
+              
+              if( request.query.ganadas_ajedrez != undefined){
+
+                    for (var i = data.length - 1; i >= 0; i--) {
+                          if( data[i].id === request.session.passport.user ){
+                          User.update({"_id": data[i]._id}, {$inc: {"local.ganadas_ajedrez":1,"local.totales_ajedrez":1}},function(error,dato){
+                          });
+                    }
+              }
+
+              }
+              
+              if( request.query.perdidas_ajedrez != undefined){
+
+                    for (var i = data.length - 1; i >= 0; i--) {
+                          if( data[i].id === request.session.passport.user ){
+                          User.update({"_id": data[i]._id}, {$inc: {"local.perdidas_ajedrez":1,"local.totales_ajedrez":1}},function(error,dato){
+                          });
+                    }
+              }
+
+              }
+              
+              if( request.query.empatadas_ajedrez != undefined){
+
+                    for (var i = data.length - 1; i >= 0; i--) {
+                          if( data[i].id === request.session.passport.user ){
+                          User.update({"_id": data[i]._id}, {$inc: {"local.empatadas_ajedrez":1,"local.totales_ajedrez":1}},function(error,dato){
+                          });
+                    }
+              }
+
+              }
+              
         }
     });
 

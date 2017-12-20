@@ -704,6 +704,14 @@ window['Chess'] = window['Chess'] || function(fen) {
   function in_check() {
     return king_attacked(turn);
   }
+  
+  function ultimo_blanco() {
+    return turn === WHITE;
+  }
+  
+  function ultimo_negro() {
+    return turn === BLACK;
+  }
 
   function in_checkmate() {
     return in_check() && generate_moves().length === 0;
@@ -1188,10 +1196,18 @@ window['Chess'] = window['Chess'] || function(fen) {
     in_stalemate: function() {
       return in_stalemate();
     },
+    
+    ultimo_blanco: function() {
+    return ultimo_blanco();
+    },
+  
+    ultimo_negro: function() {
+    return ultimo_negro();
+    },
+
 
     in_draw: function() {
-      return half_moves >= 100 ||
-             in_stalemate() ||
+      return in_stalemate() ||
              insufficient_material() ||
              in_threefold_repetition();
     },
@@ -1205,8 +1221,7 @@ window['Chess'] = window['Chess'] || function(fen) {
     },
 
     game_over: function() {
-      return half_moves >= 100 ||
-             in_checkmate() ||
+      return in_checkmate() ||
              in_stalemate() ||
              insufficient_material() ||
              in_threefold_repetition();

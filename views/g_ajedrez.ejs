@@ -82,13 +82,40 @@ var init = function() {
 
 //--- start example JS ---
 var board,
-  game = new Chess();
+GANAX = 0,
+GANAO = 0,
+EMPAT = 0,
+game = new Chess();
 
 // do not pick up pieces if the game is over
 // only pick up pieces for White
+
+function enviadatos_gan(){
+		window.location = "/m?ganadas_ajedrez="+ GANAX;
+		console.log("Ganaste muy bien");
+		return true;
+
+
+}
+
+function enviadatos_per(){
+		window.location = "/m?perdidas_ajedrez="+ EMPAT;
+		console.log("Perdiste tronco");
+		return true;
+
+}
+
+
+function enviadatos_empat(){
+		window.location = "/m?empatadas_ajedrez="+ EMPAT;
+		console.log("Empataste ere mu malo");
+		return true;
+
+}
+
+
 var onDragStart = function(source, piece, position, orientation) {
-  if (game.in_checkmate() === true || game.in_draw() === true ||
-    piece.search(/^b/) !== -1) {
+  if (game.in_checkmate() === true || game.in_draw() === true) {
     return false;
   }
 };
@@ -97,7 +124,17 @@ var makeRandomMove = function() {
   var possibleMoves = game.moves();
 
   // game over
-  if (possibleMoves.length === 0) return;
+  if (possibleMoves.length === 0) {
+    if (game.ultimo_blanco() === true){
+      enviadatos_per();
+    console.log("negros ganadores");
+    }
+    if (game.ultimo_negro() === true){
+      enviadatos_gan();
+    console.log("blancos ganadores");
+    }
+  console.log("GAME OOOOOOOOOOOOVER#######################################################################################################");
+  return};
 
   var randomIndex = Math.floor(Math.random() * possibleMoves.length);
   game.move(possibleMoves[randomIndex]);
