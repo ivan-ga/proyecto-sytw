@@ -3,7 +3,7 @@
 
 ## Games
 
-Aplicación web para diferentes juegos de mesa.
+Aplicación web para diferentes juegos de mesa. Damas, Ajedrez, 3 en raya y buscaminas.
 
  ![](/public/img/readme/login.png)
  
