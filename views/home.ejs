@@ -25,17 +25,7 @@
   <link href="../css/style.css" rel="stylesheet">
 </head>
 <style type="text/css">
-img { width: 140px; height: 140px; border-radius: 50%!important }
-
-
-    
-    
-    .en-medio{
-        padding: 5%;
-    }
-    
- 
-
+    img { width: 140px; height: 140px; border-radius: 50%!important }
 </style>
 <body>
 
@@ -67,16 +57,13 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
 		            <br>
 		            <input type="submit" value="Subir archivo" name="submit" onsubmit="setTimeout(function () { window.location.reload(); }, 10)"> 
 	           </form>
-
-            </div>
-        </div>
-
-    <div class="col-sm-6 ">
-
-
-          <% } %>
-
-          <% if (user.local.username_facebook != null) { %>
+	           
+	       <% } %>
+	           
+	           
+	           
+	           
+	           <% if (user.local.username_facebook != null) { %>
             <h2 class="fa fa-facebook"> Facebook</h2><br>
             <img src="http://graph.facebook.com/<%= user.local.id %>/picture?type=large" class="img-circle"><br>
             <strong>Name</strong>: <%= user.local.username_facebook %><br><br>
@@ -98,30 +85,12 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
 
           <% } %>
 
+            </div>
+        </div>
 
-
-
-
-          <% if (!user) { %>
-
-            <div class="login-form">
-               <h1>Si quiere acceder al juego debe iniciar sesión</h1>
-
-               <button type="button" class="log-btn" onclick="window.location='/login';">Log in</button>
-
-
-             </div>
-
-          <% } else { %>
-
-
-
-
-
-
-          <% } %>
-
-
+  
+     <div class="col-sm-7">
+        
             <table class="table-responsive">
                 <tr>
                 <th>Juego</th>
@@ -149,7 +118,7 @@ img { width: 140px; height: 140px; border-radius: 50%!important }
                      <td><%= user.local.totales_buscaminas%> </td>
                      <td><%= user.local.ganadas_buscaminas %></td>
                      <td><%= user.local.perdidas_buscaminas %></td>
-                     <td><%= user.local.empatadas_buscaminas %></td>
+                     <td align="center">-</td>
                 </tr>
                 <tr>
                     <td>Damas</td>
