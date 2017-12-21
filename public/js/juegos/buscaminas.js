@@ -323,11 +323,11 @@ function cargarTablero(){
 /*Enviar acutilizar la tabla de base de datos*/
 function enviadatos_gan(){
 	    
-		window.location = "/m?ganadas_3enraya=1";
+		window.location = "/actulizar?perdidas_buscaminas=1";
 		return true;
 }
 function enviadatos_per(){
-		window.location = "/m?perdidas_buscaminas=1";
+		window.location = "/actualizar?perdidas_buscaminas=1";
 		return true;
 
 }

@@ -19,7 +19,7 @@ const userSchema = Estructura.User;
 const User = mongoose.model("User", userSchema);
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Login' });
 });
 
 router.get('/registro_error', function(req, res, next) {
@@ -140,7 +140,7 @@ router.get('/login/github/return', passport.authenticate('github', {
 }));
 
 // ### ACTUALIZAR ESTADÍSTICAS ###
-router.get('/m', isLoggedIn, (request, response) => {
+router.get('/actualizar', isLoggedIn, (request, response) => {
 
     User.find({}, function(err,data)
     {

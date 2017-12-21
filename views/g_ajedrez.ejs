@@ -18,7 +18,17 @@
 
 
       <link rel="stylesheet" href="css/chessboard.css" />
-
+<style>
+    .ajuste{
+       padding-left: 3%;
+      
+    } 
+    .btn {
+      
+        background-color: #2c0f62;
+    }
+  
+</style>
 </head>
 
 <body>
@@ -38,8 +48,8 @@
   
 <script src="js/ajedrez/chess.js"></script>
 <div class="row">
-<div class="col-md-4"></div>
-<div class="col-md-4" align="center"><div id="board"  style="width: 425px" ></div></div>
+<div class="col-md-4" align="right"><button type="button" class="btn btn-primary waves-effect waves-light" onclick="reset();">Empezar</button></div>
+<div class="col-md-8 ajuste" ><div id="board"  style="width: 425px" ></div></div>
 </div>
   
   <!--Footer-->
@@ -78,37 +88,34 @@
 <script src="js/ajedrez/jquery-1.10.1.min.js"></script>
 <script src="js/ajedrez/chessboard.js"></script>
 <script>
-var init = function() {
+function comienzo() {
 
 //--- start example JS ---
-var board,
-GANAX = 0,
-GANAO = 0,
-EMPAT = 0,
+var board;
 game = new Chess();
 
 // do not pick up pieces if the game is over
 // only pick up pieces for White
 
 function enviadatos_gan(){
-		window.location = "/m?ganadas_ajedrez="+ GANAX;
-		console.log("Ganaste muy bien");
+		window.location = "/actualizar?ganadas_ajedrez=1";
+		alert("You WIN")
 		return true;
 
 
 }
 
 function enviadatos_per(){
-		window.location = "/m?perdidas_ajedrez="+ EMPAT;
-		console.log("Perdiste tronco");
+		window.location = "/actualizar?perdidas_ajedrez=1";
+		console.log("It's a tie");
 		return true;
 
 }
 
 
 function enviadatos_empat(){
-		window.location = "/m?empatadas_ajedrez="+ EMPAT;
-		console.log("Empataste ere mu malo");
+		window.location = "/actualizar?empatadas_ajedrez=1";
+		alert("You Lose");
 		return true;
 
 }
@@ -133,7 +140,7 @@ var makeRandomMove = function() {
       enviadatos_gan();
     console.log("blancos ganadores");
     }
-  console.log("GAME OOOOOOOOOOOOVER#######################################################################################################");
+ 
   return};
 
   var randomIndex = Math.floor(Math.random() * possibleMoves.length);
@@ -173,7 +180,15 @@ board = ChessBoard('board', cfg);
 //--- end example JS ---
 
 }; // end init()
+var init =  comienzo();
+function reset(){
+  init={};
+  init =  comienzo();
+  $(document).ready(init);
+}
+
 $(document).ready(init);
+
 </script>
 
 </body>

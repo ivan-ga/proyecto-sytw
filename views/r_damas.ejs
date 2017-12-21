@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" ng-app='myApp'>
+
+
+<style>
+    .en-medio{
+        padding: 5%;
+    }
+    
+</style>
+
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,37 +34,7 @@
 <body>
 
     <header>
-        <!--Navbar-->
-        <!-- <nav class="navbar navbar-toggleable-md navbar-dark">
-            <div class="container">
-              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                   <span class="navbar-toggler-icon"></span>
-              </button>
-                <a class="navbar-brand" href="/">
-                    <strong>Proyecto SYTW</strong>
-                </a>
-                <div class="collapse navbar-collapse" id="navbarNav1">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/games">Juegos</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/rankings">Rankings</a>
-                        </li>
-
-                        <li class="nav-item">
-                             <a class="nav-link" href="/logout">Cerrar</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav> -->
+     
         <div ng-controller="HeaderCtrl">
           <div ng-include src="header.url"></div>
         </div>
@@ -65,7 +45,7 @@
     <main>
         <!--Main layout-->
         <!--Main layout-->
-                  <div class="container">
+                  <div class="container en-medio">
                       <!--Page heading-->
                       <div class="row">
                           <div class="offset-1 col-md-7">
@@ -96,7 +76,12 @@
                                             <td data-priority="3"><%= user[i].local.ganadas_damas %></td>
                                             <td data-priority="4"><%= user[i].local.perdidas_damas %></td>
                                             <td data-priority="5"><%= user[i].local.empatadas_damas %></td>
-                                            <td data-priority="6"><%= ((user[i].local.ganadas_damas/user[i].local.totales_damas)*100).toFixed(2) %>%</td>
+                                            <%if(user[i].local.ganadas_damas == 0){%>
+                                                 <td data-priority="6">0</td>
+                                            
+                                            <% } else{ %>
+                                                    <td data-priority="6"><%= ((user[i].local.ganadas_damas/user[i].local.totales_damas)*100).toFixed(2) %>%</td>
+                                            <% } %>
                                            </tr class="table-info">    </li>
                                         <% } %>
                                         </ul>

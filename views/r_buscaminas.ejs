@@ -24,37 +24,6 @@
 <body>
 
     <header>
-        <!--Navbar-->
-        <!-- <nav class="navbar navbar-toggleable-md navbar-dark">
-            <div class="container">
-              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                   <span class="navbar-toggler-icon"></span>
-              </button>
-                <a class="navbar-brand" href="/">
-                    <strong>Proyecto SYTW</strong>
-                </a>
-                <div class="collapse navbar-collapse" id="navbarNav1">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/games">Juegos</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/rankings">Rankings</a>
-                        </li>
-
-                        <li class="nav-item">
-                             <a class="nav-link" href="/logout">Cerrar</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav> -->
         <div ng-controller="HeaderCtrl">
           <div ng-include src="header.url"></div>
         </div>
@@ -65,7 +34,7 @@
     <main>
         <!--Main layout-->
         <!--Main layout-->
-                  <div class="container">
+                  <div class="container en-medio">
                       <!--Page heading-->
                       <div class="row">
                           <div class="offset-1 col-md-7">
@@ -95,8 +64,13 @@
                                             <td data-priority="2"><%= user[i].local.totales_buscaminas %> </td>
                                             <td data-priority="3"><%= user[i].local.ganadas_buscaminas %></td>
                                             <td data-priority="4"><%= user[i].local.perdidas_buscaminas %></td>
-                                            <td data-priority="5"><%= user[i].local.empatadas_buscaminas %></td>
-                                            <td data-priority="6"><%= ((user[i].local.ganadas_buscaminas/user[i].local.totales_buscaminas)*100).toFixed(2) %>%</td>
+                                            <td data-priority="5" align="center">-</td>
+                                            <%if(user[i].local.ganadas_buscaminas == 0){%>
+                                                 <td data-priority="6">0</td>
+                                            
+                                            <% } else{ %>
+                                                    <td data-priority="6"><%= ((user[i].local.ganadas_buscaminas/user[i].local.totales_buscaminas)*100).toFixed(2) %>%</td>
+                                            <% } %>
                                            </tr class="table-info">    </li>
                                         <% } %>
                                         </ul>
@@ -113,26 +87,7 @@
 
                       </div>
 
-
-
-
-
-
-
-
-
-
-
                   </div>
-
-                  <!--/.Main layout-->
-
-
-
-
-
-
-
 
         <!--/.Main layout-->
     </main>
@@ -171,31 +126,6 @@
     <script>
             new WOW().init();
     </script>
-
-
-<!-- <script>
-angular.module('prueba', []).controller('namesCtrl', function($scope) {
-    $scope.names = [
-        {name:'Jani',country:'Norway'},
-        {name:'Carl',country:'Sweden'},
-        {name:'Margareth',country:'England'},
-        {name:'Hege',country:'Norway'},
-        {name:'Joe',country:'Denmark'},
-        {name:'Gustav',country:'Sweden'},
-        {name:'Birgit',country:'Denmark'},
-        {name:'Mary',country:'England'},
-        {name:'Kai',country:'Norway'}
-        ];
-    $scope.orderByMe = function(x) {
-        $scope.myOrderBy = x;
-    }
-});
-</script> -->
-
-
-
-
-
 
 </body>
 

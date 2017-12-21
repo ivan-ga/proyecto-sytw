@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Proyecto-SYTW</title>
+        <title>Proyecto-SYTW - Login</title>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
@@ -21,24 +21,6 @@
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
 
-
-
-        <style>
-        
-            .fade {
-                opacity:0.5;
-            }
-            .fade:hover {
-                opacity:1;
-            }
-            .carousel-inner {
-                height: 515px;
-            }
-            .carousel-inner img {
-                width: 100%;
-                height: 470px;
-            }
-        </style>
     </head>
 
 
@@ -144,9 +126,9 @@
 
                                     <div class="row omb_row-sm-offset-3">
                                      
-                                      <!--div class="col-xs-12 col-sm-9" ng-controller="loginCtrl as vm"-->
+                                      
 <div class="col-xs-12 col-sm-9">
-                                            <!--form class="omb_loginForm" method="POST" action="/login" method="post ng-submit="vm.enviar()"-->
+                                            
                                        <form class="omb_loginForm" method="POST" action="/login">
                                                 <div class="input-group">
                                                     	<span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -159,12 +141,10 @@
                                                     <input required type="password" class="form-control" ng-model="fo.login.password" name="password" placeholder="Password">
                                                 </div>
                                                 <div>
-                                                     <a type="text" class="link" href="" ng-click="ShowForm()">Ya tienes cuenta? Regístrate aquí</a>
+                                                     <a type="text" class="link" href="" ng-click="ShowForm()">¿No tienes cuenta?. Regístrate aquí</a>
 
                                                 </div>
                                                 <button class="btn btn-lg btn-primary btn-block" value="Log in" type="submit">Login</button>
-                                                <!---a class="link" href="/registro">No tienes cuenta? Regístrate aquí</a-->
-
 
 
                                             </form>
@@ -217,8 +197,6 @@
 
 
                                                 <button class="btn btn-lg btn-primary btn-block pure-button pure-button-primary" value="Log in" type="submit">Registrarse</button>
-                                                <!--<button class="btn btn-lg btn-primary btn-block" type="submit"><a class="link" href="/registro">Sign Up </a></button>-->
-                                                <!--a class="link" href="/">Tienes cuenta? Pincha aquí</a-->
                                             </form>
 
 
@@ -229,16 +207,7 @@
 
                                         </div>
 
-
-
-
-
-
                                     </div>
-
-
-
-
 
 
                                     <div class="row omb_row-sm-offset-3">
@@ -247,7 +216,6 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-3">
                                             <p class="omb_forgotPwd">
-                                                <!--<a href="#">Forgot password?</a>-->
                                             </p>
                                         </div>
                                     </div>
@@ -279,22 +247,8 @@
 
         <!-- AngularJS -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
-       <!--script type="text/javascript" src="js/footer.js"></script-->
         <script type="text/javascript" src="js/indexControllers.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
- 
-        <!-- JQuery ->
-        <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script-->
-
-        <!-- Bootstrap tooltips ->
-        <script type="text/javascript" src="js/tether.min.js"></script-->
-
-        <!-- Bootstrap core JavaScript ->
-        <script type="text/javascript" src="js/bootstrap.min.js"></script-->
-
-        <!-- MDB core JavaScript ->
-<script type="text/javascript" src="js/mdb.min.js"></script-->
-
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
