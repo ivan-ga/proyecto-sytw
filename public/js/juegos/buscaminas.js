@@ -323,7 +323,7 @@ function cargarTablero(){
 /*Enviar acutilizar la tabla de base de datos*/
 function enviadatos_gan(){
 
-		window.location = "/actualizar?perdidas_buscaminas=1";
+		window.location = "/actualizar?ganadas_buscaminas=1";
 		return true;
 }
 function enviadatos_per(){
