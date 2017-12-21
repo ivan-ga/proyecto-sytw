@@ -5,6 +5,8 @@
 
 Aplicación web para diferentes juegos de mesa.
 
+ ![](/public/img/readme/login.png)
+
 
 ## Despliegue
 * [Cloud9]()

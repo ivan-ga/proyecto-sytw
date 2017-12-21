@@ -203,7 +203,7 @@ function(token, tokenSecret, profile, done) {
           newUser.local.token       = token;
           newUser.local.username_github    = profile.username;
           newUser.local.displayName = profile.displayName;
-          newUser.local.email = (profile.emails[0].value || '').toLowerCase();
+          //newUser.local.email = (profile.emails[0].value || '').toLowerCase();
           newUser.local.ganadas_3enraya = 0;
           newUser.local.perdidas_3enraya = 0;
           newUser.local.totales_3enraya = 0;
