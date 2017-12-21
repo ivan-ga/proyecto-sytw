@@ -182,7 +182,7 @@ router.get('/actualizar', isLoggedIn, (request, response) => {
                      }
 
               }
-              
+
               if( request.query.ganadas_ajedrez != undefined){
 
                     for (var i = data.length - 1; i >= 0; i--) {
@@ -193,7 +193,7 @@ router.get('/actualizar', isLoggedIn, (request, response) => {
               }
 
               }
-              
+
               if( request.query.perdidas_ajedrez != undefined){
 
                     for (var i = data.length - 1; i >= 0; i--) {
@@ -204,7 +204,7 @@ router.get('/actualizar', isLoggedIn, (request, response) => {
               }
 
               }
-              
+
               if( request.query.empatadas_ajedrez != undefined){
 
                     for (var i = data.length - 1; i >= 0; i--) {
@@ -215,7 +215,7 @@ router.get('/actualizar', isLoggedIn, (request, response) => {
               }
 
               }
-              
+
               ///Actualizar Buscaminas
               if( request.query.ganadas_buscaminas != undefined){
 
@@ -227,7 +227,7 @@ router.get('/actualizar', isLoggedIn, (request, response) => {
               }
 
               }
-              
+
               if( request.query.perdidas_buscaminas != undefined){
 
                     for (var i = data.length - 1; i >= 0; i--) {
@@ -238,7 +238,26 @@ router.get('/actualizar', isLoggedIn, (request, response) => {
               }
 
               }
-            
+
+              ///Actualizar Damas
+              if( request.query.ganadas_damas != undefined){
+                for (var i = data.length - 1; i >= 0; i--) {
+                  if( data[i].id === request.session.passport.user ){
+                    User.update({"_id": data[i]._id}, {$inc: {"local.ganadas_damas":1,"local.totales_damas":1}},function(error,dato){
+                      });
+                  }
+                }
+              }
+
+              if( request.query.perdidas_damas != undefined){
+                for (var i = data.length - 1; i >= 0; i--) {
+                  if( data[i].id === request.session.passport.user ){
+                    User.update({"_id": data[i]._id}, {$inc: {"local.perdidas_damas":1,"local.totales_damas":1}},function(error,dato){
+                      });
+                  }
+                }
+              }
+
         }
     });
 

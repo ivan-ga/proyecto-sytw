@@ -52,6 +52,7 @@ var Statistics = React.createClass({
 				}).join('').match(/r\sk/g) || []).length,
 				" Kings"
 			),
+
 			React.createElement(
 				"div",
 				{ className: "half" },
@@ -161,6 +162,14 @@ var GameBoard = React.createClass({
 			//is the game over? if not, swap active player
 			this.setState(this.state);
 			if (this.winDetection(this.state.board, this.state.activePlayer)) {
+				if(this.state.activePlayer = 'b'){
+					alert('Lo sentimos, has perdido.');
+					enviadatos_per();
+				}
+				else {
+					alert('Felicidades has ganado!');
+					enviadatos_gan();
+				}
 				console.log(this.state.activePlayer + ' won the game!');
 			} else {
 				this.state.activePlayer = this.state.activePlayer == 'r' ? 'b' : 'r';
@@ -390,7 +399,7 @@ var GameBoard = React.createClass({
 				}.bind(this), 1000);
 			}.bind(this), 750);
 		} else {
-			alert('no moves, you win!');
+			alert('No hay más movimientos, has ganado!');
 		}
 	},
 	aiBranch: function aiBranch(hypotheticalBoard, activePlayer, depth) {
@@ -504,3 +513,14 @@ var GameBoard = React.createClass({
 
 //render the gameboard on the board element
 ReactDOM.render(React.createElement(GameBoard, null), document.getElementById('board'));
+
+//### Enviar acutilizar la tabla de base de datos ###
+function enviadatos_gan(){
+	window.location = "/actualizar?ganadas_damas=1";
+	return true;
+}
+
+function enviadatos_per(){
+	window.location = "/actualizar?perdidas_damas=1";
+	return true;
+}

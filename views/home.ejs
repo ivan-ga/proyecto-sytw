@@ -55,14 +55,14 @@
 		            <input type="file" name="userFile" />
 		            <br>
 		            <br>
-		            <input type="submit" value="Subir archivo" name="submit" onsubmit="setTimeout(function () { window.location.reload(); }, 10)"> 
+		            <input type="submit" value="Subir archivo" name="submit" onsubmit="setTimeout(function () { window.location.reload(); }, 10)">
 	           </form>
-	           
+
 	       <% } %>
-	           
-	           
-	           
-	           
+
+
+
+
 	           <% if (user.local.username_facebook != null) { %>
             <h2 class="fa fa-facebook"> Facebook</h2><br>
             <img src="http://graph.facebook.com/<%= user.local.id %>/picture?type=large" class="img-circle"><br>
@@ -88,9 +88,9 @@
             </div>
         </div>
 
-  
+
      <div class="col-sm-7">
-        
+
             <table class="table-responsive">
                 <tr>
                 <th>Juego</th>
@@ -125,7 +125,7 @@
                      <td><%= user.local.totales_damas%> </td>
                      <td><%= user.local.ganadas_damas %></td>
                      <td><%= user.local.perdidas_damas %></td>
-                     <td><%= user.local.empatadas_damas %></td>
+                     <td align="center">-</td>
                 </tr>
 
               </table>
