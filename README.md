@@ -6,6 +6,8 @@
 Aplicación web para diferentes juegos de mesa.
 
  ![](/public/img/readme/login.png)
+ 
+ ![](/public/img/readme/juegos.png)
 
 
 ## Despliegue
