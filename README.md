@@ -11,8 +11,7 @@ Aplicación web para diferentes juegos de mesa. Damas, Ajedrez, 3 en raya y Busc
 
 
 ## Despliegue
-* [Cloud9]()
-* [Iaas]()
+* [Iaas](http://10.6.129.167:8080)
 
 
 ## Enlaces
